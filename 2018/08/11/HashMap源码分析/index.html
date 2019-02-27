@@ -155,7 +155,7 @@
   <article class="post-article">
     <section class="markdown-content"><h3 id="关于HashMap-自己的回顾"><a href="#关于HashMap-自己的回顾" class="headerlink" title="关于HashMap 自己的回顾"></a>关于HashMap 自己的回顾</h3><p>数据结构原型：</p>
 <p><strong>数组+链表</strong></p>
-<p><img src="HashMap源码分析/hashmap1.png" alt="RT"></p>
+<p><img src="/2018/08/11/HashMap源码分析/hashmap1.png" alt="RT"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class Node &#123;</span><br><span class="line">    key,</span><br><span class="line">    value,</span><br><span class="line">    next</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>先根据hash算法，得出hash值，放在 Node[] 中，当 hash值相同时，往下依次排列，当单链表长度达到一定值时，单链表转成红黑树（jdk 1.8）。</p>
 <p><strong>计算hash值：</strong></p>
@@ -197,6 +197,13 @@
         
       </a>
     
+    
+      <a class="nav-right" href="/2019/02/22/spring切面编程/">
+        
+          spring切面编程
+        
+        <span class="nav-arrow"> →</span>
+      </a>
     
   </div>
 
