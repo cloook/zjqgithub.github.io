@@ -1,153 +1,368 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="yanm1ng&#39;s blog">
+  <meta name="keyword" content="hexo-theme, vuejs">
   
+    <link rel="shortcut icon" href="/css/images/logo.png">
   
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>
-    Tag: redis |
     
-    yang的博客</title>
-  
-    <link rel="shortcut icon" href="/favicon.ico">
-  
+      yang的博客
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
   
-    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+    css('css/plugins/gitment.css')
   
-  <script src="/js/pace.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  
+    <script src="/js/qrious.js"></script>
+  
+  
+    <script src="/js/gitment.js"></script>
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
 </head>
-</html>
-<body>
-<main class="content">
-  <section class="outer">
-  <article class="articles">
-    
-    <h1 class="page-type-title">#&nbspredis</h1>
+<div class="wechat-share">
+  <img src="/css/images/logo.png">
+</div>
 
-    
-    
-    
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>yang的博客</span>
+    </a>
+    <ul class="right-list">
       
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
       
-        
-        
-    <div class="archives-wrap">
-      <div class="archive-year-wrap">
-        <a href="/archives/2019" class="archive-year">2019</a>
-      </div>
-      <div class="archives">
-        
-        <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/02/27/redis的bitmap/" class="archive-article-date">
-  <time datetime="2019-02-27T05:57:15.000Z" itemprop="datePublished">02/27</time>
-</a>
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
       
-  
-    <h2 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/27/redis的bitmap/">redis的bitmap</a>
-    </h2>
-  
-
-    </header>
-    
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li></ul>
-
-    
-  </div>
-</article>
-        
-        
-      </div>
-    </div>
-    
-  
-  
-</article></section>
-  <footer class="footer">
-  
-  <div class="outer">
-    <ul class="list-inline">
-      <li>&copy; 2019 yang的博客</li>
-      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
-      <li>Theme  <a href="https://zhwangart.github.io">zhwangart</a></li>
-      <li><i class="fe fe-bar-chart"></i> <span id="busuanzi_value_site_pv"></span></li>
-      <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
     </ul>
-  </div>
-</footer>
-</main>
-<aside class="sidebar">
-  <button class="navbar-toggle"></button>
-
-<nav class="navbar">
-  
-    <div class="logo">
-      <a href="/"><img src="/images/hexo.svg" alt="yang的博客"></a>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
     </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Archives</h2>
+  <p class="post-date">文章归档</p>
+</div>
+<main class="app-body" id="archives">
   
-  <ul class="nav nav-main">
+  
+  
+    <section class="time-section">
+  <h1 class="section-year">
+    2019
+  </h1>
+  <div class="section-list">
     
-      <li class="nav-item">
-        <a class="nav-item-link" href="/">Home</a>
-      </li>
     
-      <li class="nav-item">
-        <a class="nav-item-link" href="/archives">Archives</a>
-      </li>
+      <div class="section-list-item">
+        <a href="/2019/02/27/redis的bitmap/" class="archive-title">redis的bitmap</a>
+        <p class="archive-date">02-27</p>
+      </div>
     
-      <li class="nav-item">
-        <a class="nav-item-link" href="/gallery">Gallery</a>
-      </li>
+      <div class="section-list-item">
+        <a href="/2019/02/22/spring切面编程/" class="archive-title">spring切面编程</a>
+        <p class="archive-date">02-22</p>
+      </div>
     
-      <li class="nav-item">
-        <a class="nav-item-link" href="/about">About</a>
-      </li>
+  </div>
+</section>
+  
+    <section class="time-section">
+  <h1 class="section-year">
+    2018
+  </h1>
+  <div class="section-list">
     
-    <li class="nav-item">
-      <a class="nav-item-link nav-item-search" title="Search">
-        <i class="fe fe-search"></i>
-        Search
-      </a>
-    </li>
-  </ul>
-</nav>
+    
+      <div class="section-list-item">
+        <a href="/2018/08/11/HashMap源码分析/" class="archive-title">HashMap源码分析</a>
+        <p class="archive-date">08-11</p>
+      </div>
+    
+      <div class="section-list-item">
+        <a href="/2018/08/10/vue国际化/" class="archive-title">vue国际化</a>
+        <p class="archive-date">08-10</p>
+      </div>
+    
+      <div class="section-list-item">
+        <a href="/2018/08/08/mybatis-generator自动生成代码/" class="archive-title">mybatis-generator自动生成代码</a>
+        <p class="archive-date">08-08</p>
+      </div>
+    
+      <div class="section-list-item">
+        <a href="/2018/07/30/centos笔记/" class="archive-title">centOS笔记</a>
+        <p class="archive-date">07-30</p>
+      </div>
+    
+      <div class="section-list-item">
+        <a href="/2018/07/06/docker搭建springboot项目/" class="archive-title">docker搭建springboot项目</a>
+        <p class="archive-date">07-06</p>
+      </div>
+    
+      <div class="section-list-item">
+        <a href="/2018/06/29/java代码片段/" class="archive-title">java代码片段</a>
+        <p class="archive-date">06-29</p>
+      </div>
+    
+      <div class="section-list-item">
+        <a href="/2018/03/08/linux合集/" class="archive-title">linux合集</a>
+        <p class="archive-date">03-08</p>
+      </div>
+    
+      <div class="section-list-item">
+        <a href="/2018/03/06/centOS实践/" class="archive-title">centOS实践</a>
+        <p class="archive-date">03-06</p>
+      </div>
+    
+  </div>
+</section>
+  
+    <section class="time-section">
+  <h1 class="section-year">
+    2017
+  </h1>
+  <div class="section-list">
+    
+    
+      <div class="section-list-item">
+        <a href="/2017/10/29/前端小方法集/" class="archive-title">前端小方法集</a>
+        <p class="archive-date">10-29</p>
+      </div>
+    
+      <div class="section-list-item">
+        <a href="/2017/10/20/tensorflow-基本概念/" class="archive-title">tensorflow--基本概念</a>
+        <p class="archive-date">10-20</p>
+      </div>
+    
+      <div class="section-list-item">
+        <a href="/2017/10/12/tensorflow-安装与配置/" class="archive-title">tensorflow--安装与配置</a>
+        <p class="archive-date">10-12</p>
+      </div>
+    
+      <div class="section-list-item">
+        <a href="/2017/08/29/vue学习之路/" class="archive-title">vue学习之路</a>
+        <p class="archive-date">08-29</p>
+      </div>
+    
+      <div class="section-list-item">
+        <a href="/2017/08/10/在spring项目中使用spock测试/" class="archive-title">在spring项目中使用spock测试</a>
+        <p class="archive-date">08-10</p>
+      </div>
+    
+      <div class="section-list-item">
+        <a href="/2017/08/07/java8合集/" class="archive-title">java8合集</a>
+        <p class="archive-date">08-07</p>
+      </div>
+    
+      <div class="section-list-item">
+        <a href="/2017/08/03/ES索引间数据迁移/" class="archive-title">ES索引间数据迁移</a>
+        <p class="archive-date">08-03</p>
+      </div>
+    
+      <div class="section-list-item">
+        <a href="/2017/07/31/mysql整理/" class="archive-title">mysql整理</a>
+        <p class="archive-date">07-31</p>
+      </div>
+    
+      <div class="section-list-item">
+        <a href="/2017/07/31/小工具小方法收集/" class="archive-title">小工具小方法收集</a>
+        <p class="archive-date">07-31</p>
+      </div>
+    
+      <div class="section-list-item">
+        <a href="/2017/07/14/jquery封装上传插件/" class="archive-title">jquery封装上传插件</a>
+        <p class="archive-date">07-14</p>
+      </div>
+    
+      <div class="section-list-item">
+        <a href="/2017/07/04/echarts柱状图/" class="archive-title">echarts柱状图</a>
+        <p class="archive-date">07-04</p>
+      </div>
+    
+      <div class="section-list-item">
+        <a href="/2017/07/03/优雅地遍历数组/" class="archive-title">优雅地遍历数组</a>
+        <p class="archive-date">07-03</p>
+      </div>
+    
+      <div class="section-list-item">
+        <a href="/2017/06/29/理解闭包/" class="archive-title">理解闭包</a>
+        <p class="archive-date">06-29</p>
+      </div>
+    
+      <div class="section-list-item">
+        <a href="/2017/06/29/理解this/" class="archive-title">理解this</a>
+        <p class="archive-date">06-29</p>
+      </div>
+    
+      <div class="section-list-item">
+        <a href="/2017/06/22/使用docker搭建zookeeper集群/" class="archive-title">使用docker搭建zookeeper集群</a>
+        <p class="archive-date">06-22</p>
+      </div>
+    
+  </div>
+</section>
+  
+</main>
 
-<nav class="navbar navbar-bottom">
-  <ul class="nav">
-    <li class="nav-item">
-      
-        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
-          <i class="fe fe-feed"></i>
-        </a>
-      
-    </li>
-  </ul>
-</nav>
-
-<div class="search-form-wrap">
-  <div class="local-search local-search-plugin">
-  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
-  <div id="local-search-result" class="local-search-result"></div>
+<script>
+  (function () {
+    var url = 'http://yoursite.com/tags/redis/index.html';
+    $('#article-banner').geopattern(url);
+    $('.header').removeClass('fixed-header');
+  })();
+</script>
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
 </div>
-</div>
-</aside>
-  <script src="/js/jquery-2.0.3.min.js"></script>
-<script src="/js/lazyload.min.js"></script>
-<script src="/js/busuanzi-2.3.pure.min.js"></script>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2019 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
 
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
 
-  <script src="/fancybox/jquery.fancybox.min.js"></script>
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
 
-
-
-
-<script src="/js/ocean.js"></script>
-
-</body>
+<script src="/js/script.js"></script>
+  </body>
 </html>

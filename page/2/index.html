@@ -1,956 +1,431 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="yanm1ng&#39;s blog">
+  <meta name="keyword" content="hexo-theme, vuejs">
   
+    <link rel="shortcut icon" href="/css/images/logo.png">
   
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>
     
-    yang的博客</title>
-  
-    <link rel="shortcut icon" href="/favicon.ico">
-  
+      yang的博客
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
   
-    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+    css('css/plugins/gitment.css')
   
-  <script src="/js/pace.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  
+    <script src="/js/qrious.js"></script>
+  
+  
+    <script src="/js/gitment.js"></script>
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
 </head>
-</html>
-<body>
-<main class="content">
-  <section class="jumbotron">
-  <div class="video">
-    
-      <div class="video-frame">
-        <img src="/images/ocean/overlay-hero.png" alt="Decorative image frame">
-      </div>
-    
-    <div class="video-media">
-      <video playsinline autoplay loop muted data-autoplay poster="/images/ocean/ocean.png" x5-video-player-type="h5">
-        <source src="/images/ocean/ocean.mp4" type="video/mp4">
-        <source src="/images/ocean/ocean.ogv" type="video/ogg">
-        <source src="/images/ocean/ocean.webm" type="video/webm">
-        <p>Your user agent does not support the HTML5 Video element.</p>
-      </video>
-      <div class="video-overlay"></div>
-    </div>
-    <div class="video-inner text-center text-white">
-      <h1><a href="/">yang的博客</a></h1>
-      <p></p>
-      <div><img src="/images/hexo-inverted.svg" class="brand" alt="yang的博客"></div>
-    </div>
-    <div class="video-learn-more">
-      <a class="anchor" href="#landingpage"><i class="fe fe-mouse"></i></a>
-    </div>
-  </div>
-</section>
-
-<div id="landingpage">
-  <section class="outer">
-  <article class="articles">
-    
-    <h1 class="page-type-title"></h1>
-
-    
-      
-        <article id="post-前端小方法集" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2017/10/29/前端小方法集/">前端小方法集</a>
-    </h2>
-  
-
-      </header>
-    
-
-    
-      <div class="article-meta">
-        <a href="/2017/10/29/前端小方法集/" class="article-date">
-  <time datetime="2017-10-29T06:28:11.000Z" itemprop="datePublished">2017-10-29</time>
-</a>
-        
-      </div>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      
-        <h3 id="将一个数组等份分组"><a href="#将一个数组等份分组" class="headerlink" title="将一个数组等份分组"></a>将一个数组等份分组</h3><p>如将 [1,2,3,4,5,6,7,8,9,10]按三个一组分组成[[1,2,3],[4,5,6],[7,8,9],[10]]</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var source = [1,2,3,4,5,6,7,8,9,10]</span><br><span class="line">var result = [];</span><br><span class="line">for (var i = 0, len = data.results.length; i &lt; len; i += 3) &#123;</span><br><span class="line">        result.push(source.slice(i, i + 3));</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="字符串模板替换"><a href="#字符串模板替换" class="headerlink" title="字符串模板替换"></a>字符串模板替换</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">String.prototype.format = function() &#123;  </span><br><span class="line">    if(arguments.length == 0) return this;  </span><br><span class="line">    var obj = arguments[0];  </span><br><span class="line">    var s = this;  </span><br><span class="line">    for(var key in obj) &#123;  </span><br><span class="line">        s = s.replace(new RegExp(&quot;\\&#123;\\&#123;&quot; + key + &quot;\\&#125;\\&#125;&quot;, &quot;g&quot;), obj[key]);  </span><br><span class="line">    &#125;  </span><br><span class="line">    return s;  </span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line">var data = &#123;  </span><br><span class="line">    name:&quot;张三&quot;,  </span><br><span class="line">    age:23,  </span><br><span class="line">    sex:&quot;男&quot;  </span><br><span class="line">&#125;  </span><br><span class="line">var text = &quot;我叫&#123;&#123;name&#125;&#125;,我今年&#123;&#123;age&#125;&#125;岁,我的性别是&#123;&#123;sex&#125;&#125;!&quot;.format(data);  </span><br><span class="line">console.log(text); </span><br><span class="line">//我叫张三,我今年23岁,我的性别是男!</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/29/前端小方法集/" data-id="cjsmu9vf30015hcqecbf8h2xy" class="article-share-link">Share</a>
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-        <article id="post-tensorflow-基本概念" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2017/10/20/tensorflow-基本概念/">tensorflow--基本概念</a>
-    </h2>
-  
-
-      </header>
-    
-
-    
-      <div class="article-meta">
-        <a href="/2017/10/20/tensorflow-基本概念/" class="article-date">
-  <time datetime="2017-10-20T09:23:47.000Z" itemprop="datePublished">2017-10-20</time>
-</a>
-        
-      </div>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      
-        <h3 id="张量"><a href="#张量" class="headerlink" title="张量"></a>张量</h3><p>TensorFlow用张量这种数据结构来表示所有的数据.你可以把一个张量想象成一个n维的数组或列表.一个张量有一个静态类型和动态类型的维数.张量可以在图中的节点之间流通.</p>
-<h3 id="阶"><a href="#阶" class="headerlink" title="阶"></a>阶</h3><p>在TensorFlow系统中，张量的维数来被描述为阶.但是张量的阶和矩阵的阶并不是同一个概念.张量的阶（有时是关于如顺序或度数或者是n维）是张量维数的一个数量描述。</p>
-<p>你可以认为一个二阶张量就是我们平常所说的矩阵，一阶张量可以认为是一个向量.对于一个二阶张量你可以用语句t[i, j]来访问其中的任何元素.而对于三阶张量你可以用’t[i, j, k]’来访问其中的任何元素.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">阶</th>
-<th style="text-align:left">数学实例</th>
-<th style="text-align:left">Python 例子</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">0</td>
-<td style="text-align:left">纯量 (只有大小)</td>
-<td style="text-align:left">s = 483</td>
-</tr>
-<tr>
-<td style="text-align:left">1</td>
-<td style="text-align:left">向量(大小和方向)</td>
-<td style="text-align:left">v = [1.1, 2.2, 3.3]</td>
-</tr>
-<tr>
-<td style="text-align:left">2</td>
-<td style="text-align:left">矩阵(数据表)</td>
-<td style="text-align:left">m = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]</td>
-</tr>
-<tr>
-<td style="text-align:left">3</td>
-<td style="text-align:left">3阶张量 (数据立体)</td>
-<td style="text-align:left">t = [[[2], [4], [6]], [[8], [10], [12]], [[14], [16], [18]]]</td>
-</tr>
-<tr>
-<td style="text-align:left">n</td>
-<td style="text-align:left">n阶</td>
-<td style="text-align:left">(自己想想看)    …. </td>
-</tr>
-</tbody>
-</table>
-<h3 id="形状"><a href="#形状" class="headerlink" title="形状"></a>形状</h3><table>
-<thead>
-<tr>
-<th style="text-align:left">阶</th>
-<th style="text-align:left">形状</th>
-<th style="text-align:left">维数</th>
-<th style="text-align:left">实例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">0</td>
-<td style="text-align:left">[ ]</td>
-<td style="text-align:left">0-D</td>
-<td style="text-align:left">一个 0维张量. 一个纯量.</td>
-</tr>
-<tr>
-<td style="text-align:left">1</td>
-<td style="text-align:left">[D0]</td>
-<td style="text-align:left">1-D</td>
-<td style="text-align:left">一个1维张量的形式[5].</td>
-</tr>
-<tr>
-<td style="text-align:left">2</td>
-<td style="text-align:left">[D0, D1]</td>
-<td style="text-align:left">2-D</td>
-<td style="text-align:left">一个2维张量的形式[3, 4].</td>
-</tr>
-<tr>
-<td style="text-align:left">3</td>
-<td style="text-align:left">[D0, D1, D2]</td>
-<td style="text-align:left">3-D</td>
-<td style="text-align:left">一个3维张量的形式 [1, 4, 3].</td>
-</tr>
-<tr>
-<td style="text-align:left">n</td>
-<td style="text-align:left">[D0, D1, … Dn]</td>
-<td style="text-align:left">n-D</td>
-<td style="text-align:left">一个n维张量的形式 [D0, D1, … Dn].</td>
-</tr>
-</tbody>
-</table>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/20/tensorflow-基本概念/" data-id="cjsmu9vew000rhcqeljgklimw" class="article-share-link">Share</a>
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tensorflow/">tensorflow</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-        <article id="post-tensorflow-安装与配置" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2017/10/12/tensorflow-安装与配置/">tensorflow--安装与配置</a>
-    </h2>
-  
-
-      </header>
-    
-
-    
-      <div class="article-meta">
-        <a href="/2017/10/12/tensorflow-安装与配置/" class="article-date">
-  <time datetime="2017-10-12T02:00:38.000Z" itemprop="datePublished">2017-10-12</time>
-</a>
-        
-      </div>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      
-        <h3 id="mac-下安装tensorflow"><a href="#mac-下安装tensorflow" class="headerlink" title="mac 下安装tensorflow"></a>mac 下安装tensorflow</h3><p>按照官网指导，一步一步执行<a href="https://www.tensorflow.org/install/install_mac" target="_blank" rel="noopener">官网链接</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tensorflow 启动和关闭指令</span><br><span class="line"></span><br><span class="line">激活 source ~/tensorflow/bin/activate </span><br><span class="line">关闭  deactivate </span><br><span class="line">卸载  rm -r ~/tensorflow</span><br></pre></td></tr></table></figure>
-<h3 id="pycharm-配置"><a href="#pycharm-配置" class="headerlink" title="pycharm 配置"></a>pycharm 配置</h3><p>进入 Preferences-&gt;Project-&gt;Project Interpreter<br>点击 add local,<br>然后选择  ~/tensorflow/bin/python3</p>
-<p>写个demo测试一下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line">hello = tf.constant(&apos;Hello, TensorFlow!&apos;)</span><br><span class="line">sess = tf.Session()</span><br><span class="line">print(sess.run(hello))</span><br><span class="line"></span><br><span class="line"># b&apos;Hello, TensorFlow!&apos;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/10/12/tensorflow-安装与配置/" data-id="cjsmu9vey000vhcqe4165m743" class="article-share-link">Share</a>
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tensorflow/">tensorflow</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-        <article id="post-vue学习之路" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2017/08/29/vue学习之路/">vue学习之路</a>
-    </h2>
-  
-
-      </header>
-    
-
-    
-      <div class="article-meta">
-        <a href="/2017/08/29/vue学习之路/" class="article-date">
-  <time datetime="2017-08-29T07:22:44.000Z" itemprop="datePublished">2017-08-29</time>
-</a>
-        
-      </div>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      
-        <blockquote>
-<p>获取当前元素</p>
-</blockquote>
-<p>示例html代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;col-xs-12 col-sm-6 col-md-3&quot; v-for=&quot;item in E2.list&quot;&gt;</span><br><span class="line">&lt;div :class=&quot;plan_css&quot; v-on:mouseenter=&quot;planEnter&quot; v-on:mouseleave=&quot;planLeave&quot;&gt;</span><br><span class="line"></span><br><span class="line">//vue</span><br><span class="line">//卡片鼠标悬浮事件</span><br><span class="line">planEnter(e)&#123;</span><br><span class="line">    $(e.target).attr(&apos;class&apos;,&apos;plan popular-plan  bounce&apos;)</span><br><span class="line">&#125;,</span><br><span class="line">planLeave(e)&#123;</span><br><span class="line">    $(e.target).attr(&apos;class&apos;,&apos;plan&apos;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>补充用法</p>
-<p>e.target; //当前元素，可修改（能够用此方法获取到他的子元素等）<br> e.currentTarget;//当前元素，不可修改（不能用此方法获取到他的子元素等）</p>
-<p> $(e.target)——-当前jq元素</p>
-<hr>
-
-<blockquote>
-<p>watch js对象属性改变时视图未更新</p>
-</blockquote>
-<pre><code>//js对象属性变化时，view不会刷新，需要用Object.assign来刷新
-this.paramJson=Object.assign({},param)
-</code></pre><hr>      
-
-
-
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/29/vue学习之路/" data-id="cjsmu9veu000phcqevlvxcs3r" class="article-share-link">Share</a>
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-        <article id="post-在spring项目中使用spock测试" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2017/08/10/在spring项目中使用spock测试/">在spring项目中使用spock测试</a>
-    </h2>
-  
-
-      </header>
-    
-
-    
-      <div class="article-meta">
-        <a href="/2017/08/10/在spring项目中使用spock测试/" class="article-date">
-  <time datetime="2017-08-10T02:33:18.000Z" itemprop="datePublished">2017-08-10</time>
-</a>
-        
-      </div>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      
-        <h2 id="1-在spring项目中使用"><a href="#1-在spring项目中使用" class="headerlink" title="1. 在spring项目中使用"></a>1. 在spring项目中使用</h2><h4 id="添加依赖"><a href="#添加依赖" class="headerlink" title="添加依赖"></a>添加依赖</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.spockframework&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spock-core&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.1-groovy-2.4&lt;/version&gt;</span><br><span class="line">    &lt;scope&gt;test&lt;/scope&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.spockframework&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spock-spring&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.1-groovy-2.4&lt;/version&gt;</span><br><span class="line">    &lt;scope&gt;test&lt;/scope&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="在测试目录创建测试文件"><a href="#在测试目录创建测试文件" class="headerlink" title="在测试目录创建测试文件"></a>在测试目录创建测试文件</h4><p>详情参考<code>spock</code> 内容，传送门   <a href="https://github.com/spockframework/spock/blob/master/spock-spring/src/test/groovy/org/spockframework/spring/ScopedBeans.groovy" target="_blank" rel="noopener">spock-spring</a></p>
-<p>使用注解<br><span style="color:#FF3E96">@ScanScopedBeans</span><br><span style="color:#FF3E96">@ContextConfiguration(locations = “ScopedBeansThrowing-context.xml”)</span> </p>
-<p><code>@ContextConfiguration</code> 在实际使用时以项目资源文件路径为准，例如在resources目录下的xml配置文件，可以设置<br><code>locations = &quot;classpath:spring-config/bean-config.xml&quot;</code></p>
-<p>然后就可以开心地引入各种Bean了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">@ScanScopedBeans</span><br><span class="line">@ContextConfiguration(locations = &quot;classpath:spring-config/bean-config.xml&quot;)</span><br><span class="line">class CountWarningTest extends Specification &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    CountWarningHandler countWarningHandler</span><br><span class="line"></span><br><span class="line">    def &quot;sendCountWarningEmail&quot;() &#123;</span><br><span class="line"></span><br><span class="line">        expect:</span><br><span class="line">        countWarningHandler.sendCountWarningEmail()</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="2-在springboot-项目中使用"><a href="#2-在springboot-项目中使用" class="headerlink" title="2. 在springboot 项目中使用"></a>2. 在springboot 项目中使用</h2>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/10/在spring项目中使用spock测试/" data-id="cjsmu9vf20013hcqelfhl1142" class="article-share-link">Share</a>
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spock/">spock</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-        <article id="post-java8合集" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2017/08/07/java8合集/">java8合集</a>
-    </h2>
-  
-
-      </header>
-    
-
-    
-      <div class="article-meta">
-        <a href="/2017/08/07/java8合集/" class="article-date">
-  <time datetime="2017-08-07T01:31:11.000Z" itemprop="datePublished">2017-08-07</time>
-</a>
-        
-      </div>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      
-        <h3 id="Optional"><a href="#Optional" class="headerlink" title="Optional"></a>Optional</h3><p>Optional是Java8提供的为了解决null安全问题的一个API。善用Optional可以使我们代码中很多繁琐、丑陋的设计变得十分优雅。</p>
-<p><code>举个栗子</code></p>
-<p>如下日常java代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public static String getName(User u) &#123;</span><br><span class="line">    if (u == null)</span><br><span class="line">        return &quot;Unknown&quot;;</span><br><span class="line">    return u.name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>使用 Optional 之后，我们可以这样</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public static String getName(User u) &#123;</span><br><span class="line">    Optional&lt;User&gt; user = Optional.ofNullable(u);</span><br><span class="line">    if (!user.isPresent())</span><br><span class="line">        return &quot;SomeOne&quot;;</span><br><span class="line">    return user.get().name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>当然，这是siliyB 才会做的事情，我们还可以这样</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public static String getName(User u) &#123;</span><br><span class="line">    return Optional.ofNullable(u)</span><br><span class="line">                    .map(user-&gt;user.name)</span><br><span class="line">                    .orElse(&quot;SomeOne&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>AI，这才是Optional 的正确使用姿势，<br>那么按照这种思路，我们可以安心的进行链式调用，而不是一层层判断了。看一个场景：</p>
-<hr>
-<p><span style="color:#87CEFF">中午了，你要去附近餐馆吃饭，但是你并不熟悉附近地形，你要先确定附近<span style="color:#FF3E96">是否有餐馆</span>，餐馆<span style="color:#FF3E96">是否有你想吃的饭</span>，饭的价格你<span style="color:#FF3E96">是否可以接受</span>，  用程序语言解释如下</span></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public static String getLunch(Nearby near) throws IllegalArgumentException &#123;</span><br><span class="line">    if (near != null) &#123;</span><br><span class="line">        Restaurant restaurant = near.getRestaurant();</span><br><span class="line">        if (restaurant != null) &#123;</span><br><span class="line">            Course course = restaurant.getCourse();</span><br><span class="line">            if (course != null) &#123;</span><br><span class="line">                return course.getPrice();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    throw new IllegalArgumentException(&quot;I will be hungry&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>讲道理，这样的代码看了真的有点想吐…</p>
-<p>升级 Optional之后 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public static String getLunch(Nearby near) throws IllegalArgumentException &#123;</span><br><span class="line">    return Optional.ofNullable(near)</span><br><span class="line">            .map(n-&gt;n.getRestaurant())</span><br><span class="line">            .map(r-&gt;r.getCourse())</span><br><span class="line">            .map(c-&gt;u.getPrice())</span><br><span class="line">            .orElseThrow(()-&gt;new IllegalArgumentException(&quot;I will be hungry&quot;));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>AI，这下神清气爽了。</p>
-<p>Option还可以做参数校验</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public void setName(String name) throws IllegalArgumentException &#123;</span><br><span class="line">    this.name = Optional.ofNullable(name).filter(User::isNameValid)</span><br><span class="line">                        .orElseThrow(()-&gt;new IllegalArgumentException(&quot;Invalid username.&quot;));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><code>注意</code>😂 Optional 的方法中基本都是内部调用  isPresent() 判断, 真时处理值, 假时什么也不做.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/07/java8合集/" data-id="cjsmu9veh0008hcqewi243sb2" class="article-share-link">Share</a>
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-        <article id="post-ES索引间数据迁移" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2017/08/03/ES索引间数据迁移/">ES索引间数据迁移</a>
-    </h2>
-  
-
-      </header>
-    
-
-    
-      <div class="article-meta">
-        <a href="/2017/08/03/ES索引间数据迁移/" class="article-date">
-  <time datetime="2017-08-03T10:57:45.000Z" itemprop="datePublished">2017-08-03</time>
-</a>
-        
-      </div>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      
-        <p><code>故事背景：</code> </p>
-<p><span style="color:#FF3E96">从服务请求日志中筛选错误日志，并进行聚合，当请求日志数据多了之后，速度明显慢了下来，所以需要把错误日志从请求日志中分离出来.</span></p>
-<p>查询官方文档后找到了reindex的操作，完美解决。</p>
-<p><code>官方链接</code><br><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html" target="_blank" rel="noopener">https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html</a></p>
-<h3 id="具体操作"><a href="#具体操作" class="headerlink" title="具体操作"></a>具体操作</h3><ul>
-<li>根据总日志索引，新建一个错误日志的索引，结构完全一样</li>
-<li>执行如下命令</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">curl -XPOST &apos;yourhost:9200/_reindex?pretty&apos; -H &apos;Content-Type: application/json&apos; -d&apos;</span><br><span class="line">&#123;</span><br><span class="line">  &quot;source&quot;: &#123;</span><br><span class="line">    &quot;index&quot;: &quot;source&quot;,</span><br><span class="line">    &quot;query&quot;: &#123;</span><br><span class="line">      &quot;match&quot;: &#123;</span><br><span class="line">        &quot;status&quot;:&quot;error&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;dest&quot;: &#123;</span><br><span class="line">    &quot;index&quot;: &quot;dest&quot;,</span><br><span class="line">    &quot;routing&quot;: &quot;=error&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&apos;</span><br></pre></td></tr></table></figure>
-<h3 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h3><p><strong>考虑到数据迁移可能带来的问题，提前做了如下工作</strong></p>
-<ul>
-<li>每次记录请求日志的时候，如果是错误日志，会同步到 错误日志的索引</li>
-<li>当执行reindex的时候，并不会重复添加日志</li>
-</ul>
-<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><hr>
-<p>可以按照时间来对索引进行分割,减小单个索引体积，方便搜索和数据分析</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">curl -XPOST &apos;host:9200/_reindex?pretty&apos; -H &apos;Content-Type: application/json&apos; -d&apos;</span><br><span class="line">&#123;</span><br><span class="line">  &quot;source&quot;: &#123;</span><br><span class="line">    &quot;index&quot;: &quot;biz_data_service_search_srv_log_index&quot;,</span><br><span class="line">    &quot;query&quot;: &#123;</span><br><span class="line">      &quot;range&quot;: &#123;</span><br><span class="line">	      &quot;logTime&quot;: &#123;</span><br><span class="line">	        &quot;gte&quot;: 1517414400000,</span><br><span class="line">	        &quot;lte&quot;: 1517760000000</span><br><span class="line">	      &#125;</span><br><span class="line">	    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;dest&quot;: &#123;</span><br><span class="line">    &quot;index&quot;: &quot;biz_data_service_search_srv_log_index_180201_180205&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&apos;</span><br></pre></td></tr></table></figure>
-<p>reindex之后的biz_data_service_search_srv_log_index_180201_180205里logTime字段会被识别为long</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/03/ES索引间数据迁移/" data-id="cjsmu9ve60000hcqepdepgq0t" class="article-share-link">Share</a>
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/elasticsearch/">elasticsearch</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-        <article id="post-mysql整理" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2017/07/31/mysql整理/">mysql整理</a>
-    </h2>
-  
-
-      </header>
-    
-
-    
-      <div class="article-meta">
-        <a href="/2017/07/31/mysql整理/" class="article-date">
-  <time datetime="2017-07-31T06:11:09.000Z" itemprop="datePublished">2017-07-31</time>
-</a>
-        
-      </div>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      
-        <h2 id="根据不同条件关联不同的表"><a href="#根据不同条件关联不同的表" class="headerlink" title="根据不同条件关联不同的表"></a>根据不同条件关联不同的表</h2><p><span style="color:#FF3E96"> <strong>场景：</strong></span></p>
-<blockquote>
-<p>学生表：<br>student_id， student_name<br>教师表：<br>teacher_id， teacher_name<br>请假表：<br>leave_id， type，reason， user_id，<br>查询的结果如下：<br>姓名–对象类型—请假原因</p>
-</blockquote>
-<p><strong>现请假表里面有个对象类型字段，当为1时关联学生表，2时关联老师表，现在怎么用一条sql语句查询出老师和学生的全部请假数据</strong></p>
-<p><span style="color:#FF3E96">第一种方法</span></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">(SELECT</span><br><span class="line">t2.student_name name,</span><br><span class="line">&apos;学生&apos; type,</span><br><span class="line">t1.reason</span><br><span class="line">FROM</span><br><span class="line">`leave` t1</span><br><span class="line">LEFT JOIN student t2 ON t1.user_id = t2.student_id</span><br><span class="line">WHERE</span><br><span class="line">1 = 1</span><br><span class="line">AND t1.type = 1</span><br><span class="line">)</span><br><span class="line"> UNION ALL</span><br><span class="line">(</span><br><span class="line">    SELECT</span><br><span class="line">t2.teacher_name name,</span><br><span class="line">&apos;老师&apos; type,</span><br><span class="line">t1.reason</span><br><span class="line">FROM</span><br><span class="line">`leave` t1</span><br><span class="line">LEFT JOIN teacher t2 ON t1.user_id = t2.teacher_id</span><br><span class="line">WHERE</span><br><span class="line">1 = 1</span><br><span class="line">AND t1.type = 2 )</span><br></pre></td></tr></table></figure>
-<p><span style="color:#FF3E96">第二种方法</span></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">iF(</span><br><span class="line">type = 1,</span><br><span class="line">(</span><br><span class="line">SELECT</span><br><span class="line">student_name</span><br><span class="line">FROM</span><br><span class="line">student</span><br><span class="line">WHERE</span><br><span class="line">student_id = v.user_id</span><br><span class="line">),</span><br><span class="line">(</span><br><span class="line">SELECT</span><br><span class="line">teacher_name</span><br><span class="line">FROM</span><br><span class="line">teacher</span><br><span class="line">WHERE</span><br><span class="line">teacher_id = v.user_id</span><br><span class="line">)</span><br><span class="line">) as name,</span><br><span class="line">IF (type = 1, &apos;学生&apos;, &apos;老师&apos;) as type,</span><br><span class="line">v.reason</span><br><span class="line">FROM</span><br><span class="line">`leave` v</span><br></pre></td></tr></table></figure>
-<h2 id="每个“组”展示2条数据"><a href="#每个“组”展示2条数据" class="headerlink" title="每个“组”展示2条数据"></a>每个“组”展示2条数据</h2><p><span style="color:#FF3E96"> <strong>场景：</strong></span></p>
-<blockquote>
-<p>bizLog表记录了不同类型的日志<br>每个bizType下有多个bizLog</p>
-</blockquote>
-<p><strong><em>现在要查出每个bizType的任意两条bizLog</em></strong></p>
-<p>SQL如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">SELECT bizType,bizLogId from BizLog r</span><br><span class="line">  JOIN (</span><br><span class="line">	SELECT substring_index(GROUP_CONCAT(bizLogId), &apos;,&apos;, 1)a from BizLog GROUP BY bizType</span><br><span class="line">union ALL SELECT substring_index(substring_index(GROUP_CONCAT(bizLogId), &apos;,&apos;, 2),&apos;,&apos;,-1)a from BizLog GROUP BY bizType</span><br><span class="line">) t on t.a = r.bizLogId  ORDER BY bizType</span><br></pre></td></tr></table></figure>
-<p>过程：</p>
-<table>
-<thead>
-<tr>
-<th>bizLogId</th>
-<th>createTs</th>
-<th>bizType</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1112</td>
-<td>2017-03-10 11:51:54</td>
-<td>a</td>
-</tr>
-<tr>
-<td>1113</td>
-<td>2017-03-10 11:51:54</td>
-<td>a</td>
-</tr>
-<tr>
-<td>1114</td>
-<td>2017-03-10 11:51:54</td>
-<td>b</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT  GROUP_CONCAT(bizLogId),bizType  from BizLog GROUP BY bizType</span><br></pre></td></tr></table></figure>
-<p>查询结果</p>
-<table>
-<thead>
-<tr>
-<th>bizLogId</th>
-<th>bizType</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1112,1113</td>
-<td>a</td>
-</tr>
-<tr>
-<td>1114</td>
-<td>b</td>
-</tr>
-</tbody>
-</table>
-<p>将此查询结果与bizLog表关联</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT r.bizType,r.bizLogId from BizLog r</span><br><span class="line">  JOIN (</span><br><span class="line">SELECT GROUP_CONCAT(bizLogId) a,bizType from BizLog GROUP BY bizType</span><br><span class="line">) t on t.a = r.bizLogId  ORDER BY bizType</span><br></pre></td></tr></table></figure>
-<p>结果如下</p>
-<table>
-<thead>
-<tr>
-<th>bizLogId</th>
-<th>bizType</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1112</td>
-<td>a</td>
-</tr>
-<tr>
-<td>1114</td>
-<td>b</td>
-</tr>
-</tbody>
-</table>
-<p>这样只取了第一个id</p>
-<p><strong>如果使用 IN</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">SELECT bizType,bizLogId from BizLog where bizLogId in (</span><br><span class="line">SELECT GROUP_CONCAT(bizLogId) from BizLog GROUP BY bizType</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p>结果也是如此</p>
-<table>
-<thead>
-<tr>
-<th>bizLogId</th>
-<th>bizType</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1112</td>
-<td>a</td>
-</tr>
-<tr>
-<td>1114</td>
-<td>b</td>
-</tr>
-</tbody>
-</table>
-<p>分析问题在于 1112,1113在同一行，需要拆成两行问题便可解决，于是使用union all</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT bizType,bizLogId from BizLog r</span><br><span class="line">  JOIN (</span><br><span class="line">	SELECT substring_index(GROUP_CONCAT(bizLogId), &apos;,&apos;, 1)a from BizLog GROUP BY bizType</span><br><span class="line">union ALL SELECT substring_index(substring_index(GROUP_CONCAT(bizLogId), &apos;,&apos;, 2),&apos;,&apos;,-1)a from BizLog GROUP BY bizType</span><br><span class="line">) t on t.a = r.bizLogId  ORDER BY bizType</span><br></pre></td></tr></table></figure>
-<p>结果</p>
-<table>
-<thead>
-<tr>
-<th>bizLogId</th>
-<th>bizType</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1112</td>
-<td>a</td>
-</tr>
-<tr>
-<td>1113</td>
-<td>a</td>
-</tr>
-<tr>
-<td>1114</td>
-<td>b</td>
-</tr>
-</tbody>
-</table>
-<p>但是这样有个问题，假如不是 2条，而是100条，就比较麻烦了，暂时想不到更好的办法.😭</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/31/mysql整理/" data-id="cjsmu9ven000hhcqet077n0b7" class="article-share-link">Share</a>
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-        <article id="post-小工具小方法收集" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2017/07/31/小工具小方法收集/">小工具小方法收集</a>
-    </h2>
-  
-
-      </header>
-    
-
-    
-      <div class="article-meta">
-        <a href="/2017/07/31/小工具小方法收集/" class="article-date">
-  <time datetime="2017-07-31T02:03:27.000Z" itemprop="datePublished">2017-07-31</time>
-</a>
-        
-      </div>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      
-        <h1 id="数学运算"><a href="#数学运算" class="headerlink" title="数学运算"></a>数学运算</h1><h3 id="保留两位小数"><a href="#保留两位小数" class="headerlink" title="保留两位小数"></a><span style="color:#FF3E96">保留两位小数</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//方式一</span><br><span class="line">DecimalFormat df = new DecimalFormat(&quot;#.00&quot;);  </span><br><span class="line">System.out.println(df.format(f));</span><br><span class="line">//方式二</span><br><span class="line">System.out.println(String.format(&quot;%.2f&quot;, f)); </span><br><span class="line">//方式三</span><br><span class="line">new BigDecimal(f).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();</span><br></pre></td></tr></table></figure>
-<h1 id="Guava"><a href="#Guava" class="headerlink" title="Guava"></a>Guava</h1><h3 id="比较两个List-lt-Object-gt-的差异"><a href="#比较两个List-lt-Object-gt-的差异" class="headerlink" title="比较两个List&lt;Object&gt;的差异"></a><span style="color:#FF3E96">比较两个<code>List&lt;Object&gt;</code>的差异</span></h3><p><strong>思路：</strong></p>
-<ul>
-<li><p>先将list转为<code>Map&lt;Integer,Object&gt;</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for (int i = 0; i &lt; length; i++) &#123;</span><br><span class="line">           map.put(i, list.get(i));</span><br><span class="line">           map2.put(i, list2.get(i));</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li>使用guava的Maps.difference进行比对</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MapDifference&lt;Integer, Object&gt; difference = Maps.difference(map, map2);</span><br></pre></td></tr></table></figure>
-<ul>
-<li>遍历difference</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for (Integer index : difference.entriesDiffering().keySet()) &#123;</span><br><span class="line">    Object obj1=map.get(index);</span><br><span class="line">    Object obj2=map2.get(index);</span><br><span class="line">    //  XXOOXXXX....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/31/小工具小方法收集/" data-id="cjsmu9vf10010hcqe2l69ybme" class="article-share-link">Share</a>
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/common/">common</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-        <article id="post-jquery封装上传插件" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2017/07/14/jquery封装上传插件/">jquery封装上传插件</a>
-    </h2>
-  
-
-      </header>
-    
-
-    
-      <div class="article-meta">
-        <a href="/2017/07/14/jquery封装上传插件/" class="article-date">
-  <time datetime="2017-07-14T02:20:13.000Z" itemprop="datePublished">2017-07-14</time>
-</a>
-        
-      </div>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      
-        <p>##模板<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(function ($) &#123;</span><br><span class="line">    $.fn.myPlugin = function () &#123;</span><br><span class="line">        //你自己的插件代码</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;)(jQuery);</span><br></pre></td></tr></table></figure></p>
-<p>this关键字代表了这个插件将要执行的jQuery对象，也就是说 <strong>this = $(‘#element’)</strong></p>
-<p>##结合layui上传做一个属于自己的上传插件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">(function ($) &#123;</span><br><span class="line">    $.fn.layUpload = function (options) &#123;</span><br><span class="line">        var settings = $.extend(&#123;</span><br><span class="line">            &apos;bucket&apos;: &apos;other&apos;,</span><br><span class="line">            &apos;target&apos;: &apos;downloadUrl&apos;</span><br><span class="line">        &#125;, options);</span><br><span class="line">        var layupload = &apos;&lt;input type=&quot;file&quot; name=&quot;file&quot; lay-type=&quot;file&quot;class=&quot;layui-upload-file&quot; lay-title=&quot;单文件上传&quot;/&gt;&apos;;</span><br><span class="line">        this.append(layupload);</span><br><span class="line">        var defaultUrl = &apos;&lt;input type=&quot;hidden&quot; id=&quot;downloadUrl&quot; /&gt;&apos;;</span><br><span class="line">        this.append(defaultUrl);</span><br><span class="line">        layui.use(&apos;upload&apos;, function () &#123;</span><br><span class="line">            layui.upload(&#123;</span><br><span class="line">                url: pageConfig.host + &apos;/upload/common?bucket=&apos; + settings.bucket,</span><br><span class="line">                before: function (input) &#123;</span><br><span class="line">                    //返回的参数item，即为当前的input DOM对象</span><br><span class="line">                    if (input.files[0].size / 1024 / 1024 &gt; 5) &#123;</span><br><span class="line">                        Alerts.error(&apos;上传失败，文件大小不能超过5M!&apos;);</span><br><span class="line">                        throw new Error(&quot;上传失败，文件大小不能超过5M!&quot;);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,</span><br><span class="line">                success: function (result) &#123; //上传成功后的回调</span><br><span class="line">                    var $targetElem = &apos;#&apos; + settings.target;</span><br><span class="line">                        $($targetElem).val(result.data.data.url);</span><br><span class="line">                        $(&apos;#downloadUrl&apos;).val(result.data.data.url);</span><br><span class="line">                    &#125; else &#123;</span><br><span class="line">                        Alerts.error(&apos;上传失败，请稍后重试!&apos; + PKG.error(result));</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;)(jQuery);</span><br></pre></td></tr></table></figure>
-<p>##使用示例</p>
-<p><strong>html部分</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;div  id=&quot;up&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;input type=&quot;hidden&quot; id=&quot;callback&quot;&gt;&lt;/input&gt;</span><br></pre></td></tr></table></figure>
-<p>callback是存储上传后返回的url的元素，不管有没有callback元素，插件都会自己添加一个默认放回调url的 downloadUrl 的元素。</p>
-<p><strong>js部分</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var options=&#123;</span><br><span class="line">       bucket:&apos;&apos;,</span><br><span class="line">       target:&apos;callback&apos;</span><br><span class="line">  &#125;</span><br><span class="line">  $(&apos;#up&apos;).layUpload();</span><br></pre></td></tr></table></figure>
-<p>通过回调将返回的url绑到元素上。</p>
-<blockquote>
-<p>$.extend方法和$.fn.extend方法都可以用来扩展jQuery功能，通过阅读jQuery源码我们可以发现这两个方法的本质区别，</p>
-<p>那就是$.extend方法是在jQuery全局对象上扩展方法，$.fn.extend方法是在$选择符选择的jQuery对象上扩展方法。</p>
-<p>所以扩展jQuery的公共方法一般用$.extend方法，定义插件一般用$.fn.extend方法。</p>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/14/jquery封装上传插件/" data-id="cjsmu9vej000chcqe59c9vdjp" class="article-share-link">Share</a>
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-  </article>
-  
-  
-    <nav class="page-nav">
-      
-      <a class="extend prev" rel="prev" href="/">Newer posts</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Olde posts</a>
-    </nav>
-  
-</section>
+<div class="wechat-share">
+  <img src="/css/images/logo.png">
 </div>
 
-  <footer class="footer">
-  
-  <div class="outer">
-    <ul class="list-inline">
-      <li>&copy; 2019 yang的博客</li>
-      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
-      <li>Theme  <a href="https://zhwangart.github.io">zhwangart</a></li>
-      <li><i class="fe fe-bar-chart"></i> <span id="busuanzi_value_site_pv"></span></li>
-      <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>yang的博客</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link active">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
     </ul>
-  </div>
-</footer>
-</main>
-<aside class="sidebar">
-  <button class="navbar-toggle"></button>
-
-<nav class="navbar">
-  
-    <div class="logo">
-      <a href="/"><img src="/images/hexo.svg" alt="yang的博客"></a>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
     </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link mobile-active">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <main class="app-body">
   
-  <ul class="nav nav-main">
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/">Home</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/archives">Archives</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/gallery">Gallery</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/about">About</a>
-      </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link nav-item-search" title="Search">
-        <i class="fe fe-search"></i>
-        Search
-      </a>
-    </li>
-  </ul>
-</nav>
-
-<nav class="navbar navbar-bottom">
-  <ul class="nav">
-    <li class="nav-item">
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2017/10/29/前端小方法集/">前端小方法集</a>
+      </h2>
+      <p class="article-date">October 29, 2017</p>
       
-        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
-          <i class="fe fe-feed"></i>
-        </a>
+        
+  <a href="/tags#javascript">
+    <span class="tag-code">javascript</span>
+  </a>
+
       
-    </li>
-  </ul>
-</nav>
+      <div class="article-summary">
+        
+          将一个数组等份分组如将 [1,2,3,4,5,6,7,8,9,10]按三个一组分组成[[1,2,3],[4,5,6],[7,8,9],[10]]
+12345var source = [1,2,3,4,5,6,7,8,9,10]var result = [];for (var i = 0, l ...
+        
+      </div>
+      <a class="more" href="/2017/10/29/前端小方法集/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2017/10/20/tensorflow-基本概念/">tensorflow--基本概念</a>
+      </h2>
+      <p class="article-date">October 20, 2017</p>
+      
+        
+  <a href="/tags#tensorflow">
+    <span class="tag-code">tensorflow</span>
+  </a>
 
-<div class="search-form-wrap">
-  <div class="local-search local-search-plugin">
-  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
-  <div id="local-search-result" class="local-search-result"></div>
+      
+      <div class="article-summary">
+        
+          张量TensorFlow用张量这种数据结构来表示所有的数据.你可以把一个张量想象成一个n维的数组或列表.一个张量有一个静态类型和动态类型的维数.张量可以在图中的节点之间流通.
+阶在TensorFlow系统中，张量的维数来被描述为阶.但是张量的阶和矩阵的阶并不是同一个概念.张量的阶（有时是关于 ...
+        
+      </div>
+      <a class="more" href="/2017/10/20/tensorflow-基本概念/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2017/10/12/tensorflow-安装与配置/">tensorflow--安装与配置</a>
+      </h2>
+      <p class="article-date">October 12, 2017</p>
+      
+        
+  <a href="/tags#tensorflow">
+    <span class="tag-code">tensorflow</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          mac 下安装tensorflow按照官网指导，一步一步执行官网链接
+12345tensorflow 启动和关闭指令激活 source ~/tensorflow/bin/activate 关闭  deactivate 卸载  rm -r ~/tensorflow
+pycharm 配置进入 P ...
+        
+      </div>
+      <a class="more" href="/2017/10/12/tensorflow-安装与配置/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2017/08/29/vue学习之路/">vue学习之路</a>
+      </h2>
+      <p class="article-date">August 29, 2017</p>
+      
+        
+  <a href="/tags#vue">
+    <span class="tag-code">vue</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          
+获取当前元素
+
+示例html代码
+1234567891011&lt;div class=&quot;col-xs-12 col-sm-6 col-md-3&quot; v-for=&quot;item in E2.list&quot;&gt;&lt;div :class=&quot;pla ...
+        
+      </div>
+      <a class="more" href="/2017/08/29/vue学习之路/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2017/08/10/在spring项目中使用spock测试/">在spring项目中使用spock测试</a>
+      </h2>
+      <p class="article-date">August 10, 2017</p>
+      
+        
+  <a href="/tags#spock">
+    <span class="tag-code">spock</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          1. 在spring项目中使用添加依赖1234567891011121314&lt;dependency&gt;    &lt;groupId&gt;org.spockframework&lt;/groupId&gt;    &lt;artifactId&gt;spock-core&lt;/ ...
+        
+      </div>
+      <a class="more" href="/2017/08/10/在spring项目中使用spock测试/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2017/08/07/java8合集/">java8合集</a>
+      </h2>
+      <p class="article-date">August 7, 2017</p>
+      
+        
+  <a href="/tags#java">
+    <span class="tag-code">java</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          OptionalOptional是Java8提供的为了解决null安全问题的一个API。善用Optional可以使我们代码中很多繁琐、丑陋的设计变得十分优雅。
+举个栗子
+如下日常java代码
+12345public static String getName(User u) &#123;   ...
+        
+      </div>
+      <a class="more" href="/2017/08/07/java8合集/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2017/08/03/ES索引间数据迁移/">ES索引间数据迁移</a>
+      </h2>
+      <p class="article-date">August 3, 2017</p>
+      
+        
+  <a href="/tags#elasticsearch">
+    <span class="tag-code">elasticsearch</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          故事背景： 
+从服务请求日志中筛选错误日志，并进行聚合，当请求日志数据多了之后，速度明显慢了下来，所以需要把错误日志从请求日志中分离出来.
+查询官方文档后找到了reindex的操作，完美解决。
+官方链接https://www.elastic.co/guide/en/elasticsearch ...
+        
+      </div>
+      <a class="more" href="/2017/08/03/ES索引间数据迁移/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2017/07/31/mysql整理/">mysql整理</a>
+      </h2>
+      <p class="article-date">July 31, 2017</p>
+      
+        
+  <a href="/tags#mysql">
+    <span class="tag-code">mysql</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          根据不同条件关联不同的表 场景：
+
+学生表：student_id， student_name教师表：teacher_id， teacher_name请假表：leave_id， type，reason， user_id，查询的结果如下：姓名–对象类型—请假原因
+
+现请假表里面有个对象类型字段， ...
+        
+      </div>
+      <a class="more" href="/2017/07/31/mysql整理/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2017/07/31/小工具小方法收集/">小工具小方法收集</a>
+      </h2>
+      <p class="article-date">July 31, 2017</p>
+      
+        
+  <a href="/tags#common">
+    <span class="tag-code">common</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          数学运算保留两位小数1234567//方式一DecimalFormat df = new DecimalFormat(&quot;#.00&quot;);  System.out.println(df.format(f));//方式二System.out.println(String.for ...
+        
+      </div>
+      <a class="more" href="/2017/07/31/小工具小方法收集/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2017/07/14/jquery封装上传插件/">jquery封装上传插件</a>
+      </h2>
+      <p class="article-date">July 14, 2017</p>
+      
+        
+  <a href="/tags#javascript">
+    <span class="tag-code">javascript</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          ##模板12345(function ($) &#123;    $.fn.myPlugin = function () &#123;        //你自己的插件代码    &#125;;&#125;)(jQuery);
+this关键字代表了这个插件将要执行的jQuery对象，也就是说  ...
+        
+      </div>
+      <a class="more" href="/2017/07/14/jquery封装上传插件/">Read more</a>
+    </article>
+  
+
+  
+    <div class="guide-pager">
+  
+    <a href="/"><span class="page-arrow">← </span>Prev</a>
+  
+  
+    <a href="/page/3/">Next<span class="page-arrow"> →</span></a>
+  
 </div>
+  
+</main>
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
 </div>
-</aside>
-  <script src="/js/jquery-2.0.3.min.js"></script>
-<script src="/js/lazyload.min.js"></script>
-<script src="/js/busuanzi-2.3.pure.min.js"></script>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2019 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
 
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
 
-  <script src="/fancybox/jquery.fancybox.min.js"></script>
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
 
-
-
-
-<script src="/js/ocean.js"></script>
-
-</body>
+<script src="/js/script.js"></script>
+  </body>
 </html>
