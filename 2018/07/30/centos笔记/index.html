@@ -1,133 +1,57 @@
 <!DOCTYPE html>
-<html lang="">
-
-
+<html>
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>
-    centOS笔记 | yang的博客
-  </title>
-  <meta name="description" content>
+    centOS笔记 |
+    
+    yang的博客</title>
   
-  <meta name="keywords" content="
-  centOS
-  ">
+    <link rel="shortcut icon" href="/favicon.ico">
   
-  <meta name="author" content="yang">
-
-  <meta http-equiv="Cache-Control" content="no-transform">
-  <meta http-equiv="Cache-Control" content="no-siteapp">
-
-  <link rel="icon" type="image/x-icon" href>
-  <link rel="stylesheet" href="/css/main.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/style.css">
   
-
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
   
-
-  <script src="//cdnjs.cloudflare.com/ajax/libs/vue/1.0.25-csp/vue.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+  <script src="/js/pace.min.js"></script>
 </head>
+</html>
+<body>
+<main class="content">
+  <section class="outer">
+  <article id="post-centos笔记" class="article article-type-post" itemscope itemprop="blogPost">
 
-<body id="replica-app">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      centOS笔记
+    </h1>
+  
 
-<nav class="navbar-wrapper">
-  <div class="navbar">
-    <div class="container clearfix">
-      <a href="/" class="navbar-logo"><i class="fa fa-github"></i></a>
+      </header>
+    
 
-      <div class="navbar-search float-left desktop-only">
-        <div class="navbar-search-form">
-          <label for="gsc-i-id1">This website</label>
-          <div id="google-search">
-            <gcse:search></gcse:search>
-          </div>
-        </div>
+    
+      <div class="article-meta">
+        <a href="/2018/07/30/centos笔记/" class="article-date">
+  <time datetime="2018-07-30T10:02:26.000Z" itemprop="datePublished">2018-07-30</time>
+</a>
+        
       </div>
+    
 
-      <ul class="navbar-nav float-left">
-        
-        <li><a href="/archives">Archives</a></li>
-        
-        
-        <li><a href="/categories">Categories</a></li>
-        
-        
-        <li><a href="/tags">Tags</a></li>
-        
-        
-        <li class="desktop-only"><a href="/atom.xml" target="_blank">RSS</a></li>
-        
-      </ul>
-
-      <ul class="navbar-nav user-nav float-right desktop-only">
-        <li class="user-nav-notification">
-          <a><span class="user-nav-unread"></span><i class="fa fa-bell"></i></a>
-        </li>
-        <li>
-          <a><i class="fa fa-plus"></i> <i class="fa fa-caret-down"></i></a>
-        </li>
-        <li class="user-nav-logo">
-          <a><img src="https://octodex.github.com/images/baracktocat.jpg"> <i class="fa fa-caret-down"></i></a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-<div class="main-container">
-  <header class="header-wrapper desktop-only">
-  <div class="container header-site-detail">
-    <ul class="header-toolbar">
-      <li class="clearfix">
-        <a href="/archives" class="header-toolbar-left"><i class="fa fa-file-text"></i> Posts </a>
-        <a href="/archives" class="header-toolbar-right"> 25 </a>
-      </li>
-      <li>
-        <a href="/tags" class="header-toolbar-left"><i class="fa fa-tags"></i> Tags </a>
-        <a href="/tags" class="header-toolbar-right"> 15 </a>
-      </li>
-      <li>
-        <a href="/categories" class="header-toolbar-left"><i class="fa fa-folder-open"></i> Categories </a>
-        <a href="/categories" class="header-toolbar-right"> 0 </a>
-      </li>
-    </ul>
-    <h2 class="header-title">
-      <i class="fa fa-book text-muted"></i>
-      <a href="/">yang的博客</a>
+    <div class="article-entry" itemprop="articleBody">
       
       
-    </h2>
-  </div>
-
-  <div class="container">
-    <div class="header-tab-wrapper clearfix">
-      <span class="header-tab header-tab-selected"><i class="fa fa-thumbs-o-up"></i> Like</span>
-      <span class="header-tab"><i class="fa fa-share-alt"></i> Share</span>
-      <span class="header-tab"><i class="fa fa-comments-o"></i> Discussion</span>
-      <span class="header-tab"><i class="fa fa-bookmark-o"></i> Bookmark </span>
-      <span class="header-tab"><i class="fa fa-smile-o"></i> Smile <i class="fa fa-caret-down"></i></span>
-    </div>
-  </div>
-</header>
-
-
-<div class="post-container container">
-  <h3>
-    <i class="fa fa-user-o"></i>
-    yang
-
-    <span class="post-date float-right" title="{{moment(1532944946000).format('MMM DD, YYYY, h:mm:ss A')}}">
-      <i class="fa fa-pencil-square-o"></i>
-      {{moment(1532944946000).fromNow()}}
-    </span>
-  </h3>
-
-  <article class="post-content">
-    <h1>centOS笔记</h1>
-    <h2 id="命令集"><a href="#命令集" class="headerlink" title="命令集"></a>命令集</h2><p>centos 查看所有运行中的服务的详细信息命令：</p>
+      
+        <h2 id="命令集"><a href="#命令集" class="headerlink" title="命令集"></a>命令集</h2><p>centos 查看所有运行中的服务的详细信息命令：</p>
 <p><span style="color:red">netstat -tunpl</span></p>
 <p>停止服务：</p>
 <p><span style="color:red">pkill -9 (服务名称，如 nginx,docker…) </span></p>
@@ -139,41 +63,129 @@
 <p>springboot部署云服务器<br><span style="color:red">nohup java -jar helloworld.jar &amp;</span></p>
 <p><code>nohup的意思不挂服务，常驻的意思，除非云服务器重启，那就没法了；最后一个&amp;表示执行命令后要生成日志文件nohup.out</code></p>
 
-  </article>
-</div>
-
-
-    
-
-
-
-
-</div>
-
-<div class="footer-wrapper container">
-  <footer class="footer clearfix">
-    <div class="clearfix">
-    <a href="http://yoursite.com" class="footer-logo">
-      <i class="fa fa-github"></i>
-    </a>
-    <ul class="footer-social-link">
-      <li>© 2018 yang</li>
-      <li><a href="http://yoursite.com">Home</a></li>
       
-    </ul>
-    <div class="footer-theme-info">
-      Theme <a href="//github.com/sabrinaluo/hexo-theme-replica">Replica</a>
-      by <a href="//github.com/sabrinaluo">Hiitea</a> ❤ Powered by Hexo
     </div>
-    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/30/centos笔记/" data-id="cjsmu9vee0004hcqey6zd34et" class="article-share-link">Share</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/centOS/">centOS</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
     
-  </footer>
+  <nav class="article-nav">
+    
+      <a href="/2018/08/08/mybatis-generator自动生成代码/" class="article-nav-link">
+        <strong class="article-nav-caption">Newer posts</strong>
+        <div class="article-nav-title">
+          
+            mybatis-generator自动生成代码
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2018/07/06/docker搭建springboot项目/" class="article-nav-link">
+        <strong class="article-nav-caption">Olde posts</strong>
+        <div class="article-nav-title">docker搭建springboot项目</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  
+
+</article>
+
+
+
+</section>
+  <footer class="footer">
+  
+  <div class="outer">
+    <ul class="list-inline">
+      <li>&copy; 2019 yang的博客</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://zhwangart.github.io">zhwangart</a></li>
+      <li><i class="fe fe-bar-chart"></i> <span id="busuanzi_value_site_pv"></span></li>
+      <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+    </ul>
+  </div>
+</footer>
+</main>
+<aside class="sidebar">
+  <button class="navbar-toggle"></button>
+
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="yang的博客"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">Home</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">Archives</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">Gallery</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">About</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
 </div>
+</div>
+</aside>
+  <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
 
 
 
 
-<script src="/js/main.js"></script>
+<script src="/js/ocean.js"></script>
 
 </body>
 </html>

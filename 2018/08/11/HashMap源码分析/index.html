@@ -1,133 +1,57 @@
 <!DOCTYPE html>
-<html lang="">
-
-
+<html>
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>
-    HashMap源码分析 | yang的博客
-  </title>
-  <meta name="description" content>
+    HashMap源码分析 |
+    
+    yang的博客</title>
   
-  <meta name="keywords" content="
-  java
-  ">
+    <link rel="shortcut icon" href="/favicon.ico">
   
-  <meta name="author" content="yang">
-
-  <meta http-equiv="Cache-Control" content="no-transform">
-  <meta http-equiv="Cache-Control" content="no-siteapp">
-
-  <link rel="icon" type="image/x-icon" href>
-  <link rel="stylesheet" href="/css/main.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/style.css">
   
-
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
   
-
-  <script src="//cdnjs.cloudflare.com/ajax/libs/vue/1.0.25-csp/vue.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+  <script src="/js/pace.min.js"></script>
 </head>
+</html>
+<body>
+<main class="content">
+  <section class="outer">
+  <article id="post-HashMap源码分析" class="article article-type-post" itemscope itemprop="blogPost">
 
-<body id="replica-app">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      HashMap源码分析
+    </h1>
+  
 
-<nav class="navbar-wrapper">
-  <div class="navbar">
-    <div class="container clearfix">
-      <a href="/" class="navbar-logo"><i class="fa fa-github"></i></a>
+      </header>
+    
 
-      <div class="navbar-search float-left desktop-only">
-        <div class="navbar-search-form">
-          <label for="gsc-i-id1">This website</label>
-          <div id="google-search">
-            <gcse:search></gcse:search>
-          </div>
-        </div>
+    
+      <div class="article-meta">
+        <a href="/2018/08/11/HashMap源码分析/" class="article-date">
+  <time datetime="2018-08-11T13:54:02.000Z" itemprop="datePublished">2018-08-11</time>
+</a>
+        
       </div>
+    
 
-      <ul class="navbar-nav float-left">
-        
-        <li><a href="/archives">Archives</a></li>
-        
-        
-        <li><a href="/categories">Categories</a></li>
-        
-        
-        <li><a href="/tags">Tags</a></li>
-        
-        
-        <li class="desktop-only"><a href="/atom.xml" target="_blank">RSS</a></li>
-        
-      </ul>
-
-      <ul class="navbar-nav user-nav float-right desktop-only">
-        <li class="user-nav-notification">
-          <a><span class="user-nav-unread"></span><i class="fa fa-bell"></i></a>
-        </li>
-        <li>
-          <a><i class="fa fa-plus"></i> <i class="fa fa-caret-down"></i></a>
-        </li>
-        <li class="user-nav-logo">
-          <a><img src="https://octodex.github.com/images/baracktocat.jpg"> <i class="fa fa-caret-down"></i></a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-<div class="main-container">
-  <header class="header-wrapper desktop-only">
-  <div class="container header-site-detail">
-    <ul class="header-toolbar">
-      <li class="clearfix">
-        <a href="/archives" class="header-toolbar-left"><i class="fa fa-file-text"></i> Posts </a>
-        <a href="/archives" class="header-toolbar-right"> 25 </a>
-      </li>
-      <li>
-        <a href="/tags" class="header-toolbar-left"><i class="fa fa-tags"></i> Tags </a>
-        <a href="/tags" class="header-toolbar-right"> 15 </a>
-      </li>
-      <li>
-        <a href="/categories" class="header-toolbar-left"><i class="fa fa-folder-open"></i> Categories </a>
-        <a href="/categories" class="header-toolbar-right"> 0 </a>
-      </li>
-    </ul>
-    <h2 class="header-title">
-      <i class="fa fa-book text-muted"></i>
-      <a href="/">yang的博客</a>
+    <div class="article-entry" itemprop="articleBody">
       
       
-    </h2>
-  </div>
-
-  <div class="container">
-    <div class="header-tab-wrapper clearfix">
-      <span class="header-tab header-tab-selected"><i class="fa fa-thumbs-o-up"></i> Like</span>
-      <span class="header-tab"><i class="fa fa-share-alt"></i> Share</span>
-      <span class="header-tab"><i class="fa fa-comments-o"></i> Discussion</span>
-      <span class="header-tab"><i class="fa fa-bookmark-o"></i> Bookmark </span>
-      <span class="header-tab"><i class="fa fa-smile-o"></i> Smile <i class="fa fa-caret-down"></i></span>
-    </div>
-  </div>
-</header>
-
-
-<div class="post-container container">
-  <h3>
-    <i class="fa fa-user-o"></i>
-    yang
-
-    <span class="post-date float-right" title="{{moment(1533995642000).format('MMM DD, YYYY, h:mm:ss A')}}">
-      <i class="fa fa-pencil-square-o"></i>
-      {{moment(1533995642000).fromNow()}}
-    </span>
-  </h3>
-
-  <article class="post-content">
-    <h1>HashMap源码分析</h1>
-    <h3 id="关于HashMap-自己的回顾"><a href="#关于HashMap-自己的回顾" class="headerlink" title="关于HashMap 自己的回顾"></a>关于HashMap 自己的回顾</h3><p>数据结构原型：</p>
+      
+        <h3 id="关于HashMap-自己的回顾"><a href="#关于HashMap-自己的回顾" class="headerlink" title="关于HashMap 自己的回顾"></a>关于HashMap 自己的回顾</h3><p>数据结构原型：</p>
 <p><strong>数组+链表</strong></p>
 <p><img src="/2018/08/11/HashMap源码分析/hashmap1.png" alt="RT"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class Node &#123;</span><br><span class="line">    key,</span><br><span class="line">    value,</span><br><span class="line">    next</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -147,41 +71,129 @@
 <p>Node[] 扩容之后，要重新计算hash值，对已存在的Node进行迁移<br><strong>Node[]上任意节点的迁移一定是原地不动或者 index+扩充长度</strong><br>为什么这样呢，<br>因为我们扩充2倍之后，等于加了一位，比如原来是16 = 10000，现在变成了 32 = 100000 在重新计算hash值的时候，&amp; 运算由01111 变成了 011111<br>  &nbsp;&nbsp;01111<br>011111<br>可以看出 后面四个1保证了后四位&amp;运算结果不会变化，然后再往左一位结果可能是0也可能是1，如果是0那就是原地不动，如果是1，那就是index+扩展长度</p>
 <p>以上 🙂</p>
 
-  </article>
-</div>
-
-
-    
-
-
-
-
-</div>
-
-<div class="footer-wrapper container">
-  <footer class="footer clearfix">
-    <div class="clearfix">
-    <a href="http://yoursite.com" class="footer-logo">
-      <i class="fa fa-github"></i>
-    </a>
-    <ul class="footer-social-link">
-      <li>© 2018 yang</li>
-      <li><a href="http://yoursite.com">Home</a></li>
       
-    </ul>
-    <div class="footer-theme-info">
-      Theme <a href="//github.com/sabrinaluo/hexo-theme-replica">Replica</a>
-      by <a href="//github.com/sabrinaluo">Hiitea</a> ❤ Powered by Hexo
     </div>
-    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/11/HashMap源码分析/" data-id="cjsmu9vea0001hcqep3gr9q2r" class="article-share-link">Share</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
     
-  </footer>
+  <nav class="article-nav">
+    
+      <a href="/2019/02/22/spring切面编程/" class="article-nav-link">
+        <strong class="article-nav-caption">Newer posts</strong>
+        <div class="article-nav-title">
+          
+            spring切面编程
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2018/08/10/vue国际化/" class="article-nav-link">
+        <strong class="article-nav-caption">Olde posts</strong>
+        <div class="article-nav-title">vue国际化</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  
+
+</article>
+
+
+
+</section>
+  <footer class="footer">
+  
+  <div class="outer">
+    <ul class="list-inline">
+      <li>&copy; 2019 yang的博客</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://zhwangart.github.io">zhwangart</a></li>
+      <li><i class="fe fe-bar-chart"></i> <span id="busuanzi_value_site_pv"></span></li>
+      <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+    </ul>
+  </div>
+</footer>
+</main>
+<aside class="sidebar">
+  <button class="navbar-toggle"></button>
+
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="yang的博客"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">Home</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">Archives</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">Gallery</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">About</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
 </div>
+</div>
+</aside>
+  <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
 
 
 
 
-<script src="/js/main.js"></script>
+<script src="/js/ocean.js"></script>
 
 </body>
 </html>
