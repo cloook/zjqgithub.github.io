@@ -10,7 +10,7 @@
   
   <title>
     
-      spring切面编程 | yang的博客
+      redis的bitmap | yang的博客
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -144,8 +144,8 @@
 </header>
 
     <div id="article-banner">
-  <h2>spring切面编程</h2>
-  <p class="post-date">2019-02-22</p>
+  <h2>redis的bitmap</h2>
+  <p class="post-date">2019-02-27</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
   </div>
@@ -153,8 +153,54 @@
 <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"></section>
+    <section class="markdown-content"><h2 id="redis的bitmap使用场景"><a href="#redis的bitmap使用场景" class="headerlink" title="redis的bitmap使用场景"></a>redis的bitmap使用场景</h2><blockquote>
+<p>已经前提：</p>
+<pre><code>1. 数据在redis中都是二进制存储
+2. setbit和getbit和bitcount是string数据类型的命令
+3. 8bit表示一个ascll字符，因为是c写的redis
+4. offset偏移量是从0开始
+</code></pre></blockquote>
+<h3 id="redis的bitcount计算给定key的字符串值中，被设置为1的比特位的数量"><a href="#redis的bitcount计算给定key的字符串值中，被设置为1的比特位的数量" class="headerlink" title="redis的bitcount计算给定key的字符串值中，被设置为1的比特位的数量"></a>redis的bitcount计算给定key的字符串值中，被设置为1的比特位的数量</h3><p>例如，c的二进制应该是01100011，所以bitcount计算出来结果是4</p>
+<h3 id="redis-bitop命令"><a href="#redis-bitop命令" class="headerlink" title="redis bitop命令"></a>redis bitop命令</h3><p>对一个或多个保存二进制位的字符串key进行位元操作，并将结果保存到destkey上</p>
+<p>operation可以是 AND、OR、NOT、XOR这四种操作中的任意一种：</p>
+<ol>
+<li>BITOP AND destkey key [key …],对一个或多个key求逻辑并，并将结果保存到destkey。</li>
+<li>BITOP OR destkey key [key …],对一个或多个key求逻辑或，并将结果保存到destkey。</li>
+<li>BITOP XOR destkey key [key …]，对一个或多个key求逻辑异或，并将结果保存到destkey。</li>
+<li>BITOP NOT destkey key,对给定key求逻辑非，并将结果保存到destkey。</li>
+</ol>
+<h1 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h1><h2 id="1-可以作为简单的布尔过滤器来判断用户是否执行过某些操作"><a href="#1-可以作为简单的布尔过滤器来判断用户是否执行过某些操作" class="headerlink" title="1. 可以作为简单的布尔过滤器来判断用户是否执行过某些操作"></a>1. 可以作为简单的布尔过滤器来判断用户是否执行过某些操作</h2><h2 id="2-用户日活，月活，留存率的统计"><a href="#2-用户日活，月活，留存率的统计" class="headerlink" title="2. 用户日活，月活，留存率的统计"></a>2. 用户日活，月活，留存率的统计</h2><p>案例： </p>
+<ul>
+<li>需求：每个用户登录/做任意操作，记为今天活跃，否则记为不活跃。计算出日活7日活月活等数据。</li>
+<li>具体措施：使用redis的bitmap<ul>
+<li>设置一个key专门用来记录用户日活的，可以使用时间来翻滚比如1号的key为active01.</li>
+<li>使用每个用户的唯一标识映射一个偏移量，比如使用id，这里可以把id换算成一个数字或直接id的二进制值作为该用户在当天是否活跃偏移量</li>
+<li>用户登录则把该用户偏移量上的位置设置为1</li>
+<li>每天按日期生成一个位图(bitmap)</li>
+<li>计算日活则使用bitmap即可获得一个key的位值为1的量</li>
+<li>计算月活（一个月内登录的用户去重总数）即可把30天的所有bitmap做or计算，然后再计算bitcount</li>
+<li>计算留存率（次日留存=昨天今天连续登陆的人数/昨天登录的人数）即昨天的bitmap与今天的bitmap做and计算就是连续登陆的再做bitcount就得到连续登陆人数，再bitcount得到昨天登录人数，就可以通过公式计算出次日留存。</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-实现用户上线次数统计"><a href="#3-实现用户上线次数统计" class="headerlink" title="3. 实现用户上线次数统计"></a>3. 实现用户上线次数统计</h2><ul>
+<li>假设现在我们希望记录自己网站上的用户的上线频率，比如说，计算用户A上线了多少天，用户B上线了多少天，诸如此类，以此作为数据，从而决定让哪些用户参加beta测试等活动 —- 这个模式可以使用setbit和bitcount来实现。</li>
+<li>比如说，每当用户在某一天上线的时候，我们就使用setbit，以用户名作为key，将那天所代表的网站的上线日作为offset参数，并将这个offset上的值设置为1</li>
+<li>举个例子，如果今天是网站上线的第100天，而用户peter在今天阅览过网站，那么执行命令setbit peter 100 1 ； 如果明天peter也继续阅览网站，那么执行命令setbit peter 101 1 ，以此类推</li>
+<li>当要计算peter总共以来的上线次数时，就使用bitcount命令：执行bitcount peter ，得出的结果就是peter上线的总次数</li>
+</ul>
+<h2 id="4-用户在线状态及人数统计记录"><a href="#4-用户在线状态及人数统计记录" class="headerlink" title="4. 用户在线状态及人数统计记录"></a>4. 用户在线状态及人数统计记录</h2><p>同样是使用一个bitmap，以用户的id来映射偏移量，在线标识为1，下线标识为0.可以轻松实现用户上下线查询和总在线人数的统计</p>
+</section>
     <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#redis">
+    <span class="tag-code">redis</span>
+  </a>
+
+      </div>
     
     <!-- Tags END -->
     <!-- NAV START -->
@@ -162,20 +208,13 @@
   <div class="nav-container">
     <!-- reverse left and right to put prev and next in a more logic postition -->
     
-      <a class="nav-left" href="/2018/08/11/HashMap源码分析/">
+      <a class="nav-left" href="/2019/02/22/spring切面编程/">
         <span class="nav-arrow">← </span>
         
-          HashMap源码分析
+          spring切面编程
         
       </a>
     
-    
-      <a class="nav-right" href="/2019/02/27/redis的bitmap/">
-        
-          redis的bitmap
-        
-        <span class="nav-arrow"> →</span>
-      </a>
     
   </div>
 
@@ -221,9 +260,9 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="nav">none</ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#redis的bitmap使用场景"><span class="toc-nav-text">redis的bitmap使用场景</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#redis的bitcount计算给定key的字符串值中，被设置为1的比特位的数量"><span class="toc-nav-text">redis的bitcount计算给定key的字符串值中，被设置为1的比特位的数量</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#redis-bitop命令"><span class="toc-nav-text">redis bitop命令</span></a></li></ol></li></ol><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#应用场景"><span class="toc-nav-text">应用场景</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-可以作为简单的布尔过滤器来判断用户是否执行过某些操作"><span class="toc-nav-text">1. 可以作为简单的布尔过滤器来判断用户是否执行过某些操作</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-用户日活，月活，留存率的统计"><span class="toc-nav-text">2. 用户日活，月活，留存率的统计</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-实现用户上线次数统计"><span class="toc-nav-text">3. 实现用户上线次数统计</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-用户在线状态及人数统计记录"><span class="toc-nav-text">4. 用户在线状态及人数统计记录</span></a></li></ol>
     
-  </div>
+  </li></div>
 </aside>
   
   <!-- Catalog END -->
@@ -231,7 +270,7 @@
 
 <script>
   (function () {
-    var url = 'http://yoursite.com/2019/02/22/spring切面编程/';
+    var url = 'http://yoursite.com/2019/02/27/redis的bitmap/';
     var banner = ''
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
@@ -293,7 +332,7 @@
     var gitmentConfig = "yanm1ng";
     if (gitmentConfig !== 'undefined') {
       var gitment = new Gitment({
-        id: "spring切面编程",
+        id: "redis的bitmap",
         owner: "yanm1ng",
         repo: "yanm1ng.github.io",
         oauth: {
