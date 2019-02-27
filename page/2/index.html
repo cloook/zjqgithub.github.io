@@ -122,10 +122,10 @@
     <li class="selected">
       <a href="/">Overview</a></li>
     <li class>
-      <a href="/archives">Posts <span class="counter">25</span></a>
+      <a href="/archives">Posts <span class="counter">24</span></a>
     </li>
     <li class>
-      <a href="/categories">Categories <span class="counter">0</span></a></li>
+      <a href="/categories">Categories <span class="counter">1</span></a></li>
     <li class>
       <a href="/tags">Tags <span class="counter">15</span></a></li>
   </ul>
@@ -134,26 +134,6 @@
     <div class="body-secondary">
       <p class="right-title">Recent post</p>
       <ul class="recent-post clearfix">
-        
-        <li class="recent-post-item">
-          <div class="clearfix">
-            <h5 class="post-title text-ellipsis">
-              <i class="fa fa-bars"></i>
-              <a href="/2017/10/29/前端小方法集/">前端小方法集</a>
-            </h5>
-            <p class="post-description text-ellipsis desktop-only">
-                 将一个数组等份分组  如将 [1,2,3,4,5,6,7,8,9,10]按三个一组分组成[[1
-            </p>
-            <p class="post-info desktop-only">
-              <span>
-                
-                  <i class="fa fa-folder-open"></i> Uncategorized
-                
-              </span>
-              <span><i class="fa fa-tag"></i> 1 </span>
-            </p>
-          </div>
-        </li>
         
         <li class="recent-post-item">
           <div class="clearfix">
@@ -260,6 +240,27 @@
           </div>
         </li>
         
+        <li class="recent-post-item">
+          <div class="clearfix">
+            <h5 class="post-title text-ellipsis">
+              <i class="fa fa-bars"></i>
+              <a href="/2017/08/03/ES索引间数据迁移/">ES索引间数据迁移</a>
+            </h5>
+            <p class="post-description text-ellipsis desktop-only">
+                故事背景：   
+  从服务请求日志中筛选错误日志，并进行聚合，当请求日志数据多了之后，速度明显
+            </p>
+            <p class="post-info desktop-only">
+              <span>
+                
+                  <i class="fa fa-folder-open"></i> Uncategorized
+                
+              </span>
+              <span><i class="fa fa-tag"></i> 1 </span>
+            </p>
+          </div>
+        </li>
+        
       </ul>
       <div class="calendar-container" id="calendar">
   <div class="calendar">
@@ -329,7 +330,7 @@
 
 
 <script>
-  var posts = [{"date":"2018-03-06","title":"centOS实践","url":"http://yoursite.com/2018/03/06/centOS实践/"},{"date":"2018-03-08","title":"linux合集","url":"http://yoursite.com/2018/03/08/linux合集/"},{"date":"2018-06-29","title":"java代码片段","url":"http://yoursite.com/2018/06/29/java代码片段/"},{"date":"2018-07-06","title":"docker搭建springboot项目","url":"http://yoursite.com/2018/07/06/docker搭建springboot项目/"},{"date":"2018-07-30","title":"centOS笔记","url":"http://yoursite.com/2018/07/30/centos笔记/"},{"date":"2018-08-08","title":"mybatis-generator自动生成代码","url":"http://yoursite.com/2018/08/08/mybatis-generator自动生成代码/"},{"date":"2018-08-10","title":"vue国际化","url":"http://yoursite.com/2018/08/10/vue国际化/"},{"date":"2018-08-11","title":"HashMap源码分析","url":"http://yoursite.com/2018/08/11/HashMap源码分析/"},{"date":"2019-02-22","title":"spring切面编程","url":"http://yoursite.com/2019/02/22/spring切面编程/"},{"date":"2019-02-27","title":"redis的bitmap","url":"http://yoursite.com/2019/02/27/redis的bitmap/"}];
+  var posts = [{"date":"2018-03-06","title":"centOS实践","url":"http://yoursite.com/2018/03/06/centOS实践/"},{"date":"2018-03-08","title":"linux合集","url":"http://yoursite.com/2018/03/08/linux合集/"},{"date":"2018-06-29","title":"java代码片段","url":"http://yoursite.com/2018/06/29/java代码片段/"},{"date":"2018-07-06","title":"docker搭建springboot项目","url":"http://yoursite.com/2018/07/06/docker搭建springboot项目/"},{"date":"2018-07-30","title":"centOS笔记","url":"http://yoursite.com/2018/07/30/centos笔记/"},{"date":"2018-08-08","title":"mybatis-generator自动生成代码","url":"http://yoursite.com/2018/08/08/mybatis-generator自动生成代码/"},{"date":"2018-08-10","title":"vue国际化","url":"http://yoursite.com/2018/08/10/vue国际化/"},{"date":"2018-08-11","title":"HashMap源码分析","url":"http://yoursite.com/2018/08/11/HashMap源码分析/"},{"date":"2019-02-27","title":"redis的bitmap","url":"http://yoursite.com/2019/02/27/redis的bitmap/"}];
   var today = moment().format('YYYY-MM-DD');
   var oneYearAgo = moment(today).subtract(1, 'years');
   posts = posts.filter(function(post) {
