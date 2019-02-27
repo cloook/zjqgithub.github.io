@@ -1,766 +1,506 @@
 <!DOCTYPE html>
-<html>
+<html lang="">
+
+
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>
-    
-    yang的博客</title>
+    yang的博客
+  </title>
+  <meta name="description" content>
   
-    <link rel="shortcut icon" href="/favicon.ico">
+  <meta name="author" content="yang">
+
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+  <link rel="icon" type="image/x-icon" href>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   
-  <link rel="stylesheet" href="/css/style.css">
+
   
-    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-  
-  <script src="/js/pace.min.js"></script>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/vue/1.0.25-csp/vue.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
 </head>
-</html>
-<body>
-<main class="content">
-  <section class="jumbotron">
-  <div class="video">
-    
-      <div class="video-frame">
-        <img src="/images/ocean/overlay-hero.png" alt="Decorative image frame">
+
+<body id="replica-app">
+
+<nav class="navbar-wrapper">
+  <div class="navbar">
+    <div class="container clearfix">
+      <a href="/" class="navbar-logo"><i class="fa fa-github"></i></a>
+
+      <div class="navbar-search float-left desktop-only">
+        <div class="navbar-search-form">
+          <label for="gsc-i-id1">This website</label>
+          <div id="google-search">
+            <gcse:search></gcse:search>
+          </div>
+        </div>
       </div>
-    
-    <div class="video-media">
-      <video playsinline autoplay loop muted data-autoplay poster="/images/ocean/ocean.png" x5-video-player-type="h5">
-        <source src="/images/ocean/ocean.mp4" type="video/mp4">
-        <source src="/images/ocean/ocean.ogv" type="video/ogg">
-        <source src="/images/ocean/ocean.webm" type="video/webm">
-        <p>Your user agent does not support the HTML5 Video element.</p>
-      </video>
-      <div class="video-overlay"></div>
-    </div>
-    <div class="video-inner text-center text-white">
-      <h1><a href="/">yang的博客</a></h1>
-      <p></p>
-      <div><img src="/images/hexo-inverted.svg" class="brand" alt="yang的博客"></div>
-    </div>
-    <div class="video-learn-more">
-      <a class="anchor" href="#landingpage"><i class="fe fe-mouse"></i></a>
+
+      <ul class="navbar-nav float-left">
+        
+        <li><a href="/archives">Archives</a></li>
+        
+        
+        <li><a href="/categories">Categories</a></li>
+        
+        
+        <li><a href="/tags">Tags</a></li>
+        
+        
+        <li class="desktop-only"><a href="/atom.xml" target="_blank">RSS</a></li>
+        
+      </ul>
+
+      <ul class="navbar-nav user-nav float-right desktop-only">
+        <li class="user-nav-notification">
+          <a><span class="user-nav-unread"></span><i class="fa fa-bell"></i></a>
+        </li>
+        <li>
+          <a><i class="fa fa-plus"></i> <i class="fa fa-caret-down"></i></a>
+        </li>
+        <li class="user-nav-logo">
+          <a><img src="https://octodex.github.com/images/baracktocat.jpg"> <i class="fa fa-caret-down"></i></a>
+        </li>
+      </ul>
     </div>
   </div>
-</section>
+</nav>
 
-<div id="landingpage">
-  <section class="outer">
-  <article class="articles">
-    
-    <h1 class="page-type-title"></h1>
-
-    
-      
-        <article id="post-redis的bitmap" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2019/02/27/redis的bitmap/">redis的bitmap</a>
-    </h2>
+<div class="main-container">
   
 
-      </header>
-    
+<div class="container-lg">
+  
 
+<div class="blog-intro">
+  <div class="blog-intro-user">
+    <img class="avatar" src="https://octodex.github.com/images/baracktocat.jpg">
+    <div class="user-name">
+      <div class="blog-title">yang的博客</div>
+      <div class="blog-author">yang</div>
+        <ul class="user-detail mobile-only">
     
-      <div class="article-meta">
-        <a href="/2019/02/27/redis的bitmap/" class="article-date">
-  <time datetime="2019-02-27T05:57:15.000Z" itemprop="datePublished">2019-02-27</time>
-</a>
-        
-      </div>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      
-        <h2 id="redis的bitmap使用场景"><a href="#redis的bitmap使用场景" class="headerlink" title="redis的bitmap使用场景"></a>redis的bitmap使用场景</h2><blockquote>
-<p>已经前提：</p>
-<pre><code>1. 数据在redis中都是二进制存储
-2. setbit和getbit和bitcount是string数据类型的命令
-3. 8bit表示一个ascll字符，因为是c写的redis
-4. offset偏移量是从0开始
-</code></pre></blockquote>
-<h3 id="redis的bitcount计算给定key的字符串值中，被设置为1的比特位的数量"><a href="#redis的bitcount计算给定key的字符串值中，被设置为1的比特位的数量" class="headerlink" title="redis的bitcount计算给定key的字符串值中，被设置为1的比特位的数量"></a>redis的bitcount计算给定key的字符串值中，被设置为1的比特位的数量</h3><p>例如，c的二进制应该是01100011，所以bitcount计算出来结果是4</p>
-<h3 id="redis-bitop命令"><a href="#redis-bitop命令" class="headerlink" title="redis bitop命令"></a>redis bitop命令</h3><p>对一个或多个保存二进制位的字符串key进行位元操作，并将结果保存到destkey上</p>
-<p>operation可以是 AND、OR、NOT、XOR这四种操作中的任意一种：</p>
-<ol>
-<li>BITOP AND destkey key [key …],对一个或多个key求逻辑并，并将结果保存到destkey。</li>
-<li>BITOP OR destkey key [key …],对一个或多个key求逻辑或，并将结果保存到destkey。</li>
-<li>BITOP XOR destkey key [key …]，对一个或多个key求逻辑异或，并将结果保存到destkey。</li>
-<li>BITOP NOT destkey key,对给定key求逻辑非，并将结果保存到destkey。</li>
-</ol>
-<h1 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h1><h2 id="1-可以作为简单的布尔过滤器来判断用户是否执行过某些操作"><a href="#1-可以作为简单的布尔过滤器来判断用户是否执行过某些操作" class="headerlink" title="1. 可以作为简单的布尔过滤器来判断用户是否执行过某些操作"></a>1. 可以作为简单的布尔过滤器来判断用户是否执行过某些操作</h2><h2 id="2-用户日活，月活，留存率的统计"><a href="#2-用户日活，月活，留存率的统计" class="headerlink" title="2. 用户日活，月活，留存率的统计"></a>2. 用户日活，月活，留存率的统计</h2><p>案例： </p>
-<ul>
-<li>需求：每个用户登录/做任意操作，记为今天活跃，否则记为不活跃。计算出日活7日活月活等数据。</li>
-<li>具体措施：使用redis的bitmap<ul>
-<li>设置一个key专门用来记录用户日活的，可以使用时间来翻滚比如1号的key为active01.</li>
-<li>使用每个用户的唯一标识映射一个偏移量，比如使用id，这里可以把id换算成一个数字或直接id的二进制值作为该用户在当天是否活跃偏移量</li>
-<li>用户登录则把该用户偏移量上的位置设置为1</li>
-<li>每天按日期生成一个位图(bitmap)</li>
-<li>计算日活则使用bitmap即可获得一个key的位值为1的量</li>
-<li>计算月活（一个月内登录的用户去重总数）即可把30天的所有bitmap做or计算，然后再计算bitcount</li>
-<li>计算留存率（次日留存=昨天今天连续登陆的人数/昨天登录的人数）即昨天的bitmap与今天的bitmap做and计算就是连续登陆的再做bitcount就得到连续登陆人数，再bitcount得到昨天登录人数，就可以通过公式计算出次日留存。</li>
-</ul>
-</li>
-</ul>
-<h2 id="3-实现用户上线次数统计"><a href="#3-实现用户上线次数统计" class="headerlink" title="3. 实现用户上线次数统计"></a>3. 实现用户上线次数统计</h2><ul>
-<li>假设现在我们希望记录自己网站上的用户的上线频率，比如说，计算用户A上线了多少天，用户B上线了多少天，诸如此类，以此作为数据，从而决定让哪些用户参加beta测试等活动 —- 这个模式可以使用setbit和bitcount来实现。</li>
-<li>比如说，每当用户在某一天上线的时候，我们就使用setbit，以用户名作为key，将那天所代表的网站的上线日作为offset参数，并将这个offset上的值设置为1</li>
-<li>举个例子，如果今天是网站上线的第100天，而用户peter在今天阅览过网站，那么执行命令setbit peter 100 1 ； 如果明天peter也继续阅览网站，那么执行命令setbit peter 101 1 ，以此类推</li>
-<li>当要计算peter总共以来的上线次数时，就使用bitcount命令：执行bitcount peter ，得出的结果就是peter上线的总次数</li>
-</ul>
-<h2 id="4-用户在线状态及人数统计记录"><a href="#4-用户在线状态及人数统计记录" class="headerlink" title="4. 用户在线状态及人数统计记录"></a>4. 用户在线状态及人数统计记录</h2><p>同样是使用一个bitmap，以用户的id来映射偏移量，在线标识为1，下线标识为0.可以轻松实现用户上下线查询和总在线人数的统计</p>
-
+    <li>
+      <i class="fa fa-link"></i>
+      <a href="http://yoursite.com">http://yoursite.com</a>
+    </li>
+  </ul>
+    </div>
+    <div class="blog-description">
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/27/redis的bitmap/" data-id="cjsmu9ves000lhcqe1ru1y4og" class="article-share-link">Share</a>
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li></ul>
-
-    </footer>
-
   </div>
 
-  
-
-  
-
-</article>
-
-
-
-      
-        <article id="post-spring切面编程" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
+  <ul class="user-detail desktop-only">
     
-      <header class="article-header">
-        
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2019/02/22/spring切面编程/">spring切面编程</a>
-    </h2>
-  
+    <li>
+      <i class="fa fa-link"></i>
+      <a href="http://yoursite.com">http://yoursite.com</a>
+    </li>
+  </ul>
 
-      </header>
-    
-
-    
-      <div class="article-meta">
-        <a href="/2019/02/22/spring切面编程/" class="article-date">
-  <time datetime="2019-02-22T05:45:52.000Z" itemprop="datePublished">2019-02-22</time>
-</a>
-        
-      </div>
-    
-
-    <div class="article-entry" itemprop="articleBody">
+  <div class="social-media desktop-only">
+    <h4>Social Media</h4>
+    <ul>
       
-      
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/22/spring切面编程/" data-id="cjsmu9vet000nhcqed39rxcch" class="article-share-link">Share</a>
-      
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-        <article id="post-HashMap源码分析" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2018/08/11/HashMap源码分析/">HashMap源码分析</a>
-    </h2>
-  
-
-      </header>
-    
-
-    
-      <div class="article-meta">
-        <a href="/2018/08/11/HashMap源码分析/" class="article-date">
-  <time datetime="2018-08-11T13:54:02.000Z" itemprop="datePublished">2018-08-11</time>
-</a>
-        
-      </div>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      
-        <h3 id="关于HashMap-自己的回顾"><a href="#关于HashMap-自己的回顾" class="headerlink" title="关于HashMap 自己的回顾"></a>关于HashMap 自己的回顾</h3><p>数据结构原型：</p>
-<p><strong>数组+链表</strong></p>
-<p><img src="/2018/08/11/HashMap源码分析/hashmap1.png" alt="RT"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class Node &#123;</span><br><span class="line">    key,</span><br><span class="line">    value,</span><br><span class="line">    next</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>先根据hash算法，得出hash值，放在 Node[] 中，当 hash值相同时，往下依次排列，当单链表长度达到一定值时，单链表转成红黑树（jdk 1.8）。</p>
-<p><strong>计算hash值：</strong></p>
-<p>Object.hashCode() 对 Node[] 的size 取模<br><strong>源码里采用位运算，效率更高</strong><br>hashMap 默认长度是 1&lt;&lt;4 = 2^4 = 16<br>所以取模运算等同于 hash &amp; (16-1)<br>可以得出 0-15的索引值，即Node[]的索引位置</p>
-<p><strong>&amp; 运算</strong></p>
-<p>111010101001111<br>&amp;<br>01111</p>
-<p><hr><br>结果一定是在 00000~01111之间，即0-15</p>
-<p>考虑到哈希碰撞结果的不稳定性，hash算法进行优化</p>
-<p>Object.hashCode()^Object.hashCode()&gt;&gt;&gt;16</p>
-<p>hashCode的高16位和低16位进行与或运算，是一个合适的散列分布<br><strong>为什么是16呢</strong>，因为hashCode是int<br>拿这个结果再 &amp; (Node[].size()-1) 得出的索引值是比较均匀合理的</p>
-<p><strong>Node[] 扩容</strong></p>
-<p>每次计算完哈希值之后，去Node[] 排坑，如果坑位还没有被占用，就填进去，顺便 ++占位值；<br>当占位置 &gt; Node[].size() * 默认科学计量值(0.75)的时候，就该扩容了</p>
-<p>扩容每次扩充两倍，map的size有上限，最大值是 2^32<br><strong>为什么是2倍呢？</strong><br>这还是回到哈希算法中，我们用到了 &amp; 运算来计算最后的hash值，也就是Node[]的size一定要是2的n次幂才是合适的<br><strong>为什么是2的n次幂呢？</strong><br>因为任何2的n次幂一定是 1000…  这种结构的然后 Node[].size() -1 就是 0111… 这种结构的<br>0111…这种结构才能够保证Node[]数组的每一个索引值都有可能被用到，不会造成空闲位置的资源浪费</p>
-<p><strong>Node[] 扩容之后</strong></p>
-<p>Node[] 扩容之后，要重新计算hash值，对已存在的Node进行迁移<br><strong>Node[]上任意节点的迁移一定是原地不动或者 index+扩充长度</strong><br>为什么这样呢，<br>因为我们扩充2倍之后，等于加了一位，比如原来是16 = 10000，现在变成了 32 = 100000 在重新计算hash值的时候，&amp; 运算由01111 变成了 011111<br>  &nbsp;&nbsp;01111<br>011111<br>可以看出 后面四个1保证了后四位&amp;运算结果不会变化，然后再往左一位结果可能是0也可能是1，如果是0那就是原地不动，如果是1，那就是index+扩展长度</p>
-<p>以上 🙂</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/11/HashMap源码分析/" data-id="cjsmu9vea0001hcqep3gr9q2r" class="article-share-link">Share</a>
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-        <article id="post-vue国际化" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2018/08/10/vue国际化/">vue国际化</a>
-    </h2>
-  
-
-      </header>
-    
-
-    
-      <div class="article-meta">
-        <a href="/2018/08/10/vue国际化/" class="article-date">
-  <time datetime="2018-08-10T07:37:06.000Z" itemprop="datePublished">2018-08-10</time>
-</a>
-        
-      </div>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      
-        <h1 id="vue语言国际化"><a href="#vue语言国际化" class="headerlink" title="vue语言国际化"></a>vue语言国际化</h1><p>参考 <a href="https://panjiachen.github.io/vue-element-admin-site/zh/guide/advanced/i18n.html" target="_blank" rel="noopener">vue-element-admin</a>  的国际化标准</p>
-<p>通过 vue-i18n实现</p>
-<h3 id="step1"><a href="#step1" class="headerlink" title="step1"></a>step1</h3><p>main.js</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import i18n from &apos;./lang&apos; </span><br><span class="line">import Element from &apos;element-ui&apos;</span><br><span class="line"></span><br><span class="line">Vue.use(Element, &#123;</span><br><span class="line">  size: &apos;medium&apos;, // set element-ui default size</span><br><span class="line">  i18n: (key, value) =&gt; i18n.t(key, value)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h3 id="step2"><a href="#step2" class="headerlink" title="step2"></a>step2</h3><p>在src下创建lang文件夹<br>.<br>├── en.js<br>├── index.js<br>└── zh.js</p>
-<p>index.js</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &apos;vue&apos;</span><br><span class="line">import VueI18n from &apos;vue-i18n&apos;</span><br><span class="line">import Cookies from &apos;js-cookie&apos;</span><br><span class="line">import elementEnLocale from &apos;element-ui/lib/locale/lang/en&apos; // element-ui lang</span><br><span class="line">import elementZhLocale from &apos;element-ui/lib/locale/lang/zh-CN&apos;// element-ui lang</span><br><span class="line">import enLocale from &apos;./en&apos;</span><br><span class="line">import zhLocale from &apos;./zh&apos;</span><br><span class="line"></span><br><span class="line">Vue.use(VueI18n)</span><br><span class="line"></span><br><span class="line">const messages = &#123;</span><br><span class="line">  en: &#123;</span><br><span class="line">    ...enLocale,</span><br><span class="line">    ...elementEnLocale</span><br><span class="line">  &#125;,</span><br><span class="line">  zh: &#123;</span><br><span class="line">    ...zhLocale,</span><br><span class="line">    ...elementZhLocale</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const i18n = new VueI18n(&#123;</span><br><span class="line">  // set locale</span><br><span class="line">  // options: en or zh</span><br><span class="line">  locale: Cookies.get(&apos;language&apos;) || &apos;en&apos;,</span><br><span class="line">  // set locale messages</span><br><span class="line">  messages</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">export default i18n</span><br></pre></td></tr></table></figure>
-<p>en.js</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">export default &#123;</span><br><span class="line">    route: &#123;</span><br><span class="line">      dashboard: &apos;Dashboard&apos;,</span><br><span class="line">      i18n: &apos;I18n&apos;</span><br><span class="line">    &#125;,</span><br><span class="line">    navbar: &#123;</span><br><span class="line">      logOut: &apos;Log Out&apos;,</span><br><span class="line">      dashboard: &apos;Dashboard&apos;,</span><br><span class="line">    &#125;,</span><br><span class="line">    login: &#123;</span><br><span class="line">      title: &apos;Login Form&apos;,</span><br><span class="line">      logIn: &apos;Log in&apos;,</span><br><span class="line">      username: &apos;Username&apos;,</span><br><span class="line">      password: &apos;Password&apos;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p>zh.js</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">export default &#123;</span><br><span class="line">    route: &#123;</span><br><span class="line">      dashboard: &apos;首页&apos;,</span><br><span class="line">      i18n: &apos;国际化&apos;</span><br><span class="line">    &#125;,</span><br><span class="line">    navbar: &#123;</span><br><span class="line">      logOut: &apos;退出登录&apos;,</span><br><span class="line">      dashboard: &apos;首页&apos;</span><br><span class="line">    &#125;,</span><br><span class="line">    login: &#123;</span><br><span class="line">      title: &apos;系统登录&apos;,</span><br><span class="line">      logIn: &apos;登录&apos;,</span><br><span class="line">      username: &apos;账号&apos;,</span><br><span class="line">      password: &apos;密码&apos;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="step3"><a href="#step3" class="headerlink" title="step3"></a>step3</h3><p>vuex 部分</p>
-<p>store文件目录</p>
-<p>.<br>├── getters.js<br>├── index.js<br>└── modules<br>    &nbsp;&nbsp;&nbsp;&nbsp;└── app.js</p>
-<p>getter.js</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const getters = &#123;</span><br><span class="line">  language: state =&gt; state.app.language,</span><br><span class="line">&#125;</span><br><span class="line">export default getters</span><br></pre></td></tr></table></figure>
-<p>app.js</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import Cookies from &apos;js-cookie&apos;</span><br><span class="line"></span><br><span class="line">const app = &#123;</span><br><span class="line">  state: &#123;</span><br><span class="line">    language: Cookies.get(&apos;language&apos;) || &apos;en&apos;</span><br><span class="line">  &#125;,</span><br><span class="line">  mutations: &#123;</span><br><span class="line">    SET_LANGUAGE: (state, language) =&gt; &#123;</span><br><span class="line">      state.language = language</span><br><span class="line">      Cookies.set(&apos;language&apos;, language)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  actions: &#123;</span><br><span class="line">    setLanguage(&#123; commit &#125;, language) &#123;</span><br><span class="line">      commit(&apos;SET_LANGUAGE&apos;, language)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default app</span><br></pre></td></tr></table></figure>
-<h3 id="step4"><a href="#step4" class="headerlink" title="step4"></a>step4</h3><p>语言选择组件</p>
-<p>LangSelect</p>
-<p>index.vue</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;el-dropdown trigger=&quot;click&quot; class=&apos;international&apos; @command=&quot;handleSetLanguage&quot;&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      语言</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;el-dropdown-menu slot=&quot;dropdown&quot;&gt;</span><br><span class="line">      &lt;el-dropdown-item command=&quot;zh&quot; :disabled=&quot;language===&apos;zh&apos;&quot;&gt;中文&lt;/el-dropdown-item&gt;</span><br><span class="line">      &lt;el-dropdown-item command=&quot;en&quot; :disabled=&quot;language===&apos;en&apos;&quot;&gt;English&lt;/el-dropdown-item&gt;</span><br><span class="line">    &lt;/el-dropdown-menu&gt;</span><br><span class="line">  &lt;/el-dropdown&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  computed: &#123;</span><br><span class="line">    language() &#123;</span><br><span class="line">      return this.$store.getters.language</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    handleSetLanguage(lang) &#123;</span><br><span class="line">      this.$i18n.locale = lang</span><br><span class="line">      this.$store.dispatch(&apos;setLanguage&apos;, lang)</span><br><span class="line">      this.$message(&#123;</span><br><span class="line">        message: &apos;switch language success&apos;,</span><br><span class="line">        type: &apos;success&apos;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">.international-icon &#123;</span><br><span class="line">  font-size: 20px;</span><br><span class="line">  cursor: pointer;</span><br><span class="line">  vertical-align: -5px!important;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/10/vue国际化/" data-id="cjsmu9vex000shcqeckxbgijw" class="article-share-link">Share</a>
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-        <article id="post-mybatis-generator自动生成代码" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2018/08/08/mybatis-generator自动生成代码/">mybatis-generator自动生成代码</a>
-    </h2>
-  
-
-      </header>
-    
-
-    
-      <div class="article-meta">
-        <a href="/2018/08/08/mybatis-generator自动生成代码/" class="article-date">
-  <time datetime="2018-08-08T09:55:01.000Z" itemprop="datePublished">2018-08-08</time>
-</a>
-        
-      </div>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      
-        <h3 id="pom"><a href="#pom" class="headerlink" title="pom"></a>pom</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;plugin&gt;</span><br><span class="line">    &lt;groupId&gt;org.mybatis.generator&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;mybatis-generator-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.3.2&lt;/version&gt;</span><br><span class="line">    &lt;configuration&gt;</span><br><span class="line">        &lt;configurationFile&gt;&lt;/configurationFile&gt;</span><br><span class="line">        &lt;verbose&gt;true&lt;/verbose&gt;</span><br><span class="line">        &lt;overwrite&gt;true&lt;/overwrite&gt;</span><br><span class="line">    &lt;/configuration&gt;</span><br><span class="line">    &lt;dependencies&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;mysql&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;5.1.18&lt;/version&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line">    &lt;/dependencies&gt;</span><br><span class="line">&lt;/plugin&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="generatorConfig-xml"><a href="#generatorConfig-xml" class="headerlink" title="generatorConfig.xml"></a>generatorConfig.xml</h3><p>项目目录：</p>
-<p>├── pom.xml<br>├── src<br>│   └── main<br>│       ├── java<br>│       │   └── com<br>│       │       └── heeexy<br>│       │           └── example<br>│       │               ├── MyApplication.java<br>│       │               ├── mapper<br>│       │               │   └── tpl<br>│       │               │       └── TUserMapper.java<br>│       │               ├── model<br>│       │               │   ├── TUser.java<br>│       │               │   └── TUserExample.java<br>│       │               └── util<br>│       │                   ├── CommonUtil.java<br>│       │                   ├── RandomUtil.java<br>│       │                   ├── StringTools.java<br>│       │                   ├── constants<br>│       │                   │   ├── Constants.java<br>│       │                   │   └── ErrorEnum.java<br>│       │                   └── model<br>│       │                       └── One2Many.java<br>│       └── resources<br>│           ├── application.yml<br>│           ├── generatorConfig.xml<br>│           └── mapper<br>│               └── tpl<br>│                   └── TUserMapper.xml</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE generatorConfiguration</span><br><span class="line">        PUBLIC &quot;-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN&quot;</span><br><span class="line">        &quot;http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd&quot;&gt;</span><br><span class="line">&lt;generatorConfiguration&gt;</span><br><span class="line">    &lt;context id=&quot;main_sell&quot; targetRuntime=&quot;MyBatis3&quot; defaultModelType=&quot;flat&quot;&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!-- 注释 --&gt;</span><br><span class="line">        &lt;commentGenerator&gt;</span><br><span class="line">            &lt;property name=&quot;suppressAllComments&quot; value=&quot;true&quot;/&gt;</span><br><span class="line">            &lt;!-- 是否取消注释 --&gt;</span><br><span class="line">            &lt;property name=&quot;suppressDate&quot; value=&quot;true&quot;/&gt;</span><br><span class="line">            &lt;!-- 是否生成注释代时间戳--&gt;</span><br><span class="line">        &lt;/commentGenerator&gt;</span><br><span class="line">        &lt;!-- jdbc连接 --&gt;</span><br><span class="line">        &lt;jdbcConnection driverClass=&quot;com.mysql.jdbc.Driver&quot;</span><br><span class="line">                        connectionURL=&quot;jdbc:mysql://localhost:3306/lake?characterEncoding=utf8&quot;</span><br><span class="line">                        userId=&quot;root&quot;</span><br><span class="line">                        password=&quot;yang531560&quot;/&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!-- 类型转换 --&gt;</span><br><span class="line">        &lt;javaTypeResolver&gt;</span><br><span class="line">            &lt;!-- 是否使用bigDecimal， false可自动转化以下类型（Long, Integer, Short, etc.） --&gt;</span><br><span class="line">            &lt;property name=&quot;forceBigDecimals&quot; value=&quot;false&quot;/&gt;</span><br><span class="line">        &lt;/javaTypeResolver&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!-- 生成实体类地址 --&gt;</span><br><span class="line"></span><br><span class="line">        &lt;javaModelGenerator targetPackage=&quot;com.heeexy.example.model&quot;</span><br><span class="line">                            targetProject=&quot;src/main/java&quot;&gt;</span><br><span class="line">            &lt;!-- 是否在当前路径下新加一层schema,eg：fase路径com.oop.eksp.user.model， true:com.oop.eksp.user.model.[schemaName] --&gt;</span><br><span class="line">            &lt;property name=&quot;enableSubPackages&quot; value=&quot;true&quot;/&gt;</span><br><span class="line">            &lt;!-- 是否针对string类型的字段在set的时候进行trim调用 --&gt;</span><br><span class="line">            &lt;property name=&quot;trimStrings&quot; value=&quot;true&quot;/&gt;</span><br><span class="line">        &lt;/javaModelGenerator&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!-- 生成mapxml文件 --&gt;</span><br><span class="line">        &lt;sqlMapGenerator targetPackage=&quot;mapper/tpl&quot;</span><br><span class="line">                         targetProject=&quot;src/main/resources&quot;&gt;</span><br><span class="line">            &lt;!-- 是否在当前路径下新加一层schema,eg：fase路径com.oop.eksp.user.model， true:com.oop.eksp.user.model.[schemaName] --&gt;</span><br><span class="line">            &lt;property name=&quot;enableSubPackages&quot; value=&quot;true&quot;/&gt;</span><br><span class="line">        &lt;/sqlMapGenerator&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!-- 生成mapxml对应client，也就是接口dao --&gt;</span><br><span class="line">        &lt;javaClientGenerator targetPackage=&quot;com.heeexy.example.mapper.tpl&quot;</span><br><span class="line">                             targetProject=&quot;src/main/java&quot; type=&quot;XMLMAPPER&quot;&gt;</span><br><span class="line">            &lt;!-- 是否在当前路径下新加一层schema,eg：fase路径com.oop.eksp.user.model， true:com.oop.eksp.user.model.[schemaName] --&gt;</span><br><span class="line">            &lt;property name=&quot;enableSubPackages&quot; value=&quot;true&quot;/&gt;</span><br><span class="line">        &lt;/javaClientGenerator&gt;</span><br><span class="line">        &lt;table tableName=&quot;t_user&quot; domainObjectName=&quot;TUser&quot;&gt;</span><br><span class="line">            &lt;property name=&quot;useActualColumnNames&quot; value=&quot;true&quot;/&gt;</span><br><span class="line">            &lt;!--&lt;columnOverride column=&quot;type&quot; javaType=&quot;java.lang.Integer&quot;/&gt;--&gt;</span><br><span class="line">        &lt;/table&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &lt;/context&gt;</span><br><span class="line"></span><br><span class="line">&lt;/generatorConfiguration&gt;</span><br></pre></td></tr></table></figure>
-<p>最后用执行maven插件即可生成对应的model,mapper,xml</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/08/mybatis-generator自动生成代码/" data-id="cjsmu9veq000jhcqet989gshr" class="article-share-link">Share</a>
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mybatis/">mybatis</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-        <article id="post-centos笔记" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2018/07/30/centos笔记/">centOS笔记</a>
-    </h2>
-  
-
-      </header>
-    
-
-    
-      <div class="article-meta">
-        <a href="/2018/07/30/centos笔记/" class="article-date">
-  <time datetime="2018-07-30T10:02:26.000Z" itemprop="datePublished">2018-07-30</time>
-</a>
-        
-      </div>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      
-        <h2 id="命令集"><a href="#命令集" class="headerlink" title="命令集"></a>命令集</h2><p>centos 查看所有运行中的服务的详细信息命令：</p>
-<p><span style="color:red">netstat -tunpl</span></p>
-<p>停止服务：</p>
-<p><span style="color:red">pkill -9 (服务名称，如 nginx,docker…) </span></p>
-<p>服务器文件复制:</p>
-<p><span style="color:red">scp -r dir service:dir</span></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -r example-1.0.0-SNAPSHOT.jar root@118.25.1.68:/root/tmp</span><br></pre></td></tr></table></figure>
-<p>mysql修改密码:</p>
-<p><span style="color:red">mysql&gt; set password for 用户名@localhost = password(‘新密码’);</span></p>
-<p>springboot部署云服务器<br><span style="color:red">nohup java -jar helloworld.jar &amp;</span></p>
-<p><code>nohup的意思不挂服务，常驻的意思，除非云服务器重启，那就没法了；最后一个&amp;表示执行命令后要生成日志文件nohup.out</code></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/30/centos笔记/" data-id="cjsmu9vee0004hcqey6zd34et" class="article-share-link">Share</a>
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/centOS/">centOS</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-        <article id="post-docker搭建springboot项目" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2018/07/06/docker搭建springboot项目/">docker搭建springboot项目</a>
-    </h2>
-  
-
-      </header>
-    
-
-    
-      <div class="article-meta">
-        <a href="/2018/07/06/docker搭建springboot项目/" class="article-date">
-  <time datetime="2018-07-06T01:46:31.000Z" itemprop="datePublished">2018-07-06</time>
-</a>
-        
-      </div>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      
-        <p><a href="https://github.com/spring-guides/gs-spring-boot-docker" target="_blank" rel="noopener">参考自springboot官方demo</a></p>
-<h2 id="创建应用"><a href="#创建应用" class="headerlink" title="创建应用"></a>创建应用</h2><p>创建一个基本的springboot项目，修改pom文件.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">&lt;build&gt;</span><br><span class="line">    &lt;plugins&gt;</span><br><span class="line">        &lt;plugin&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">        &lt;/plugin&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!-- tag::plugin[] --&gt;</span><br><span class="line">        &lt;plugin&gt;</span><br><span class="line">            &lt;groupId&gt;com.spotify&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;dockerfile-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;1.3.6&lt;/version&gt;</span><br><span class="line">            &lt;configuration&gt;</span><br><span class="line">                &lt;repository&gt;$&#123;docker.image.prefix&#125;/$&#123;project.artifactId&#125;&lt;/repository&gt;</span><br><span class="line">                &lt;buildArgs&gt;</span><br><span class="line">                    &lt;JAR_FILE&gt;target/$&#123;project.build.finalName&#125;.jar&lt;/JAR_FILE&gt;</span><br><span class="line">                &lt;/buildArgs&gt;</span><br><span class="line">            &lt;/configuration&gt;</span><br><span class="line">        &lt;/plugin&gt;</span><br><span class="line">        &lt;!-- end::plugin[] --&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &lt;!-- Docker maven plugin --&gt;</span><br><span class="line">        &lt;plugin&gt;</span><br><span class="line">            &lt;groupId&gt;com.spotify&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;docker-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;1.0.0&lt;/version&gt;</span><br><span class="line">            &lt;configuration&gt;</span><br><span class="line">                &lt;imageName&gt;$&#123;docker.image.prefix&#125;/$&#123;project.artifactId&#125;&lt;/imageName&gt;</span><br><span class="line">                &lt;dockerDirectory&gt;./&lt;/dockerDirectory&gt;</span><br><span class="line">                &lt;resources&gt;</span><br><span class="line">                    &lt;resource&gt;</span><br><span class="line">                        &lt;targetPath&gt;/&lt;/targetPath&gt;</span><br><span class="line">                        &lt;directory&gt;$&#123;project.build.directory&#125;&lt;/directory&gt;</span><br><span class="line">                        &lt;include&gt;$&#123;project.build.finalName&#125;.jar&lt;/include&gt;</span><br><span class="line">                    &lt;/resource&gt;</span><br><span class="line">                &lt;/resources&gt;</span><br><span class="line">            &lt;/configuration&gt;</span><br><span class="line">        &lt;/plugin&gt;</span><br><span class="line">        &lt;!-- Docker maven plugin --&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &lt;/plugins&gt;</span><br><span class="line">&lt;/build&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="这里要注意Dockerfile要放在最外层"><a href="#这里要注意Dockerfile要放在最外层" class="headerlink" title="这里要注意Dockerfile要放在最外层"></a>这里要注意Dockerfile要放在最外层</h4><p>编辑 Dockerfile</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">FROM openjdk:8-jdk-alpine</span><br><span class="line">VOLUME /tmp</span><br><span class="line">ADD demo-0.0.1-SNAPSHOT.jar app.jar</span><br><span class="line">ENTRYPOINT [&quot;java&quot;,&quot;-Djava.security.egd=file:/dev/./urandom&quot;,&quot;-jar&quot;,&quot;/app.jar&quot;]</span><br></pre></td></tr></table></figure>
-<h3 id="把项目打包"><a href="#把项目打包" class="headerlink" title="把项目打包"></a>把项目打包</h3><p><code>mvn package</code></p>
-<h3 id="使用-DockerFile-构建镜像"><a href="#使用-DockerFile-构建镜像" class="headerlink" title="使用 DockerFile 构建镜像"></a>使用 DockerFile 构建镜像</h3><p><code>mvn package docker:build</code></p>
-<h3 id="构建好之后在docker中查看"><a href="#构建好之后在docker中查看" class="headerlink" title="构建好之后在docker中查看"></a>构建好之后在docker中查看</h3><p><code>docker images</code></p>
-<h3 id="启动镜像"><a href="#启动镜像" class="headerlink" title="启动镜像"></a>启动镜像</h3><p><code>docker run -p 8080:8080 -t springio/demo</code></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/06/docker搭建springboot项目/" data-id="cjsmu9vef0005hcqeu4zomt69" class="article-share-link">Share</a>
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/">docker</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-        <article id="post-java代码片段" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2018/06/29/java代码片段/">java代码片段</a>
-    </h2>
-  
-
-      </header>
-    
-
-    
-      <div class="article-meta">
-        <a href="/2018/06/29/java代码片段/" class="article-date">
-  <time datetime="2018-06-29T06:04:32.000Z" itemprop="datePublished">2018-06-29</time>
-</a>
-        
-      </div>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      
-        <h2 id="代码片段"><a href="#代码片段" class="headerlink" title="代码片段"></a>代码片段</h2><h4 id="集合分批处理"><a href="#集合分批处理" class="headerlink" title="集合分批处理"></a>集合分批处理</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">List&lt;T&gt; requests =new ArrayList&lt;T&gt;();</span><br><span class="line"></span><br><span class="line">if (requests.size() &gt; 0) &#123;</span><br><span class="line">    int turn = requests.size() / 100 + 1;</span><br><span class="line">    for (int i = 0; i &lt; turn; i++) &#123;</span><br><span class="line">    	List&lt;T&gt; subList =new ArrayList&lt;T&gt;();</span><br><span class="line">        if (i == turn - 1) &#123;</span><br><span class="line">            subList = requests.subList(i * 100, i * 100 + requests.size() % 100);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            subList = requests.subList(i * 100, (i + 1) * 100);</span><br><span class="line">        &#125;</span><br><span class="line">        //TODO subList doing something</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/06/29/java代码片段/" data-id="cjsmu9vei0009hcqe51bj2mfc" class="article-share-link">Share</a>
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-        <article id="post-linux合集" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2018/03/08/linux合集/">linux合集</a>
-    </h2>
-  
-
-      </header>
-    
-
-    
-      <div class="article-meta">
-        <a href="/2018/03/08/linux合集/" class="article-date">
-  <time datetime="2018-03-08T02:43:27.000Z" itemprop="datePublished">2018-03-08</time>
-</a>
-        
-      </div>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      
-        <h2 id="登录服务器"><a href="#登录服务器" class="headerlink" title="登录服务器"></a>登录服务器</h2><ul>
-<li>创建文件 login </li>
-<li>编辑内容</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/expect -f</span><br><span class="line"> set user root</span><br><span class="line"> set host 服务器ip</span><br><span class="line"> set password 密码</span><br><span class="line"> set timeout -1</span><br><span class="line"></span><br><span class="line"> spawn ssh -q -l $user -p 22 $host</span><br><span class="line"> expect &quot;*assword:*&quot;</span><br><span class="line"> send &quot;$password\r&quot;</span><br><span class="line"> interact</span><br></pre></td></tr></table></figure>
-<ul>
-<li>保存到目录 sshpass</li>
-<li>添加alias, <code>alias login=&quot;expect /Users/XXXXX/Documents/sshpass/login&quot;</code></li>
-<li>输入login命令即可愉快地登录服务器了</li>
-</ul>
-<h2 id="杀死进程"><a href="#杀死进程" class="headerlink" title="杀死进程"></a>杀死进程</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep XXXXX</span><br><span class="line">kill  pid</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/08/linux合集/" data-id="cjsmu9vek000ehcqe4g5o8ba5" class="article-share-link">Share</a>
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-        <article id="post-centOS实践" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2018/03/06/centOS实践/">centOS实践</a>
-    </h2>
-  
-
-      </header>
-    
-
-    
-      <div class="article-meta">
-        <a href="/2018/03/06/centOS实践/" class="article-date">
-  <time datetime="2018-03-06T03:52:37.000Z" itemprop="datePublished">2018-03-06</time>
-</a>
-        
-      </div>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      
-        <h3 id="安装java"><a href="#安装java" class="headerlink" title="安装java"></a>安装java</h3><h4 id="用yum安装JDK"><a href="#用yum安装JDK" class="headerlink" title="用yum安装JDK"></a>用yum安装JDK</h4><p><strong>1</strong>.查看yum库中都有哪些jdk版本(暂时只发现了openjdk)<br><code>yum search java|grep jdk</code></p>
-<p><strong>2</strong>.选择版本,进行安装<br><code>yum install java-1.7.0-openjdk</code><br><em>安装完之后，默认的安装目录是在: /usr/lib/jvm/java-1.7.0-openjdk-1.7.0.75.x86_64</em></p>
-<p><strong>3</strong>.设置环境变量<br><code>vi /etc/profile</code><br>在profile文件中添加如下内容</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#set java environment</span><br><span class="line">JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.75.x86_64</span><br><span class="line">JRE_HOME=$JAVA_HOME/jre</span><br><span class="line">CLASS_PATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JRE_HOME/lib</span><br><span class="line">PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin</span><br><span class="line">export JAVA_HOME JRE_HOME CLASS_PATH PATH</span><br></pre></td></tr></table></figure>
-<p><code>source /etc/profile</code></p>
-<p><strong>4</strong>.验证JDK有效性<br><code>java -version</code></p>
-<h3 id="安装mysql"><a href="#安装mysql" class="headerlink" title="安装mysql"></a>安装mysql</h3><p><strong>1</strong>.下载mysql的repo源<br><code>wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm</code></p>
-<p><strong>2</strong>.安装mysql-community-release-el7-5.noarch.rpm包<br><code>sudo rpm -ivh mysql-community-release-el7-5.noarch.rpm</code><br><em>安装这个包后，会获得两个mysql的yum repo源：/etc/yum.repos.d/mysql-community.repo，/etc/yum.repos.d/mysql-community-source.repo</em></p>
-<p><strong>3</strong>.安装mysql<br><code>sudo yum install mysql-server</code></p>
-<p><strong>4</strong>.重置mysql密码<br><code>mysql -u root</code><br><em>登录时有可能报这样的错：ERROR 2002 (HY000): Can‘t connect to local MySQL server through socket ‘/var/lib/mysql/mysql.sock‘ (2)，原因是/var/lib/mysql的访问权限问题。下面的命令把/var/lib/mysql的拥有者改为当前用户：</em><br><code>sudo chown -R root:root /var/lib/mysql</code><br>重启mysql服务<br><code>service mysqld restart</code><br>接下来登录重置密码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root  //直接回车进入mysql控制台</span><br><span class="line">mysql &gt; use mysql;</span><br><span class="line">mysql &gt; update user set password=password(&apos;123456&apos;) where user=&apos;root&apos;;</span><br><span class="line">mysql &gt; exit;</span><br></pre></td></tr></table></figure>
-<h3 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装nginx</h3><p>直接使用 yum 来安装 Nginx<br><code>yum install nginx -y</code><br>使用 nginx 命令启动 Nginx<br><code>nginx</code><br>此时，访问 http://&lt;您的域名&gt; 可以看到 Nginx 的测试页面</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/06/centOS实践/" data-id="cjsmu9ved0003hcqe8y2jbyds" class="article-share-link">Share</a>
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/centOS/">centOS</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-  </article>
-  
-  
-    <nav class="page-nav">
-      
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Olde posts</a>
-    </nav>
-  
-</section>
-</div>
-
-  <footer class="footer">
-  
-  <div class="outer">
-    <ul class="list-inline">
-      <li>&copy; 2019 yang的博客</li>
-      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
-      <li>Theme  <a href="https://zhwangart.github.io">zhwangart</a></li>
-      <li><i class="fe fe-bar-chart"></i> <span id="busuanzi_value_site_pv"></span></li>
-      <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
     </ul>
   </div>
-</footer>
-</main>
-<aside class="sidebar">
-  <button class="navbar-toggle"></button>
+</div>
 
-<nav class="navbar">
-  
-    <div class="logo">
-      <a href="/"><img src="/images/hexo.svg" alt="yang的博客"></a>
+
+  <div class="blog-detail">
+    
+<nav class="blog-detail-nav desktop-only">
+  <ul class="clearfix">
+    <li class="selected">
+      <a href="/">Overview</a></li>
+    <li class>
+      <a href="/archives">Posts <span class="counter">25</span></a>
+    </li>
+    <li class>
+      <a href="/categories">Categories <span class="counter">0</span></a></li>
+    <li class>
+      <a href="/tags">Tags <span class="counter">15</span></a></li>
+  </ul>
+</nav>
+
+    <div class="body-secondary">
+      <p class="right-title">Recent post</p>
+      <ul class="recent-post clearfix">
+        
+        <li class="recent-post-item">
+          <div class="clearfix">
+            <h5 class="post-title text-ellipsis">
+              <i class="fa fa-bars"></i>
+              <a href="/2019/02/27/redis的bitmap/">redis的bitmap</a>
+            </h5>
+            <p class="post-description text-ellipsis desktop-only">
+                 redis的bitmap使用场景  
+ 已经前提： 
+  1. 数据在redis中都是二进制存
+            </p>
+            <p class="post-info desktop-only">
+              <span>
+                
+                  <i class="fa fa-folder-open"></i> Uncategorized
+                
+              </span>
+              <span><i class="fa fa-tag"></i> 1 </span>
+            </p>
+          </div>
+        </li>
+        
+        <li class="recent-post-item">
+          <div class="clearfix">
+            <h5 class="post-title text-ellipsis">
+              <i class="fa fa-bars"></i>
+              <a href="/2019/02/22/spring切面编程/">spring切面编程</a>
+            </h5>
+            <p class="post-description text-ellipsis desktop-only">
+              
+            </p>
+            <p class="post-info desktop-only">
+              <span>
+                
+                  <i class="fa fa-folder-open"></i> Uncategorized
+                
+              </span>
+              <span><i class="fa fa-tag"></i> 0 </span>
+            </p>
+          </div>
+        </li>
+        
+        <li class="recent-post-item">
+          <div class="clearfix">
+            <h5 class="post-title text-ellipsis">
+              <i class="fa fa-bars"></i>
+              <a href="/2018/08/11/HashMap源码分析/">HashMap源码分析</a>
+            </h5>
+            <p class="post-description text-ellipsis desktop-only">
+                 关于HashMap 自己的回顾  数据结构原型： 
+  数组+链表  
+   
+      1
+            </p>
+            <p class="post-info desktop-only">
+              <span>
+                
+                  <i class="fa fa-folder-open"></i> Uncategorized
+                
+              </span>
+              <span><i class="fa fa-tag"></i> 1 </span>
+            </p>
+          </div>
+        </li>
+        
+        <li class="recent-post-item">
+          <div class="clearfix">
+            <h5 class="post-title text-ellipsis">
+              <i class="fa fa-bars"></i>
+              <a href="/2018/08/10/vue国际化/">vue国际化</a>
+            </h5>
+            <p class="post-description text-ellipsis desktop-only">
+                 vue语言国际化  参考  vue-element-admin   的国际化标准 
+ 通过 v
+            </p>
+            <p class="post-info desktop-only">
+              <span>
+                
+                  <i class="fa fa-folder-open"></i> Uncategorized
+                
+              </span>
+              <span><i class="fa fa-tag"></i> 1 </span>
+            </p>
+          </div>
+        </li>
+        
+        <li class="recent-post-item">
+          <div class="clearfix">
+            <h5 class="post-title text-ellipsis">
+              <i class="fa fa-bars"></i>
+              <a href="/2018/08/08/mybatis-generator自动生成代码/">mybatis-generator自动生成代码</a>
+            </h5>
+            <p class="post-description text-ellipsis desktop-only">
+                 pom       1   2   3   4   5   6   7   8   9   1
+            </p>
+            <p class="post-info desktop-only">
+              <span>
+                
+                  <i class="fa fa-folder-open"></i> Uncategorized
+                
+              </span>
+              <span><i class="fa fa-tag"></i> 1 </span>
+            </p>
+          </div>
+        </li>
+        
+        <li class="recent-post-item">
+          <div class="clearfix">
+            <h5 class="post-title text-ellipsis">
+              <i class="fa fa-bars"></i>
+              <a href="/2018/07/30/centos笔记/">centOS笔记</a>
+            </h5>
+            <p class="post-description text-ellipsis desktop-only">
+                 命令集  centos 查看所有运行中的服务的详细信息命令： 
+  netstat -tunp
+            </p>
+            <p class="post-info desktop-only">
+              <span>
+                
+                  <i class="fa fa-folder-open"></i> Uncategorized
+                
+              </span>
+              <span><i class="fa fa-tag"></i> 1 </span>
+            </p>
+          </div>
+        </li>
+        
+      </ul>
+      <div class="calendar-container" id="calendar">
+  <div class="calendar">
+    <h3>
+      {{posts.length}} contributions in the last year
+    </h3>
+    <div class="calendar-graph-container">
+      <div class="calendar-graph">
+        <svg width="676" height="104" @mouseout="mouseoverDate=null">
+          <g transform="translate(16, 20)">
+            <g v-for="week in calendar" :transform="week.transform">
+              <rect v-for="day in week.days" :x="day.x" :y="day.y" :fill="day.fill" @click="selectedDate=day.date" @mouseover="mouseoverDate=day.date" :class="{active:selectedDate===day.date}" data-count="{{day.posts.length}}" data-date="{{day.date}}" class="day" width="10" height="10"/>
+            </g>
+
+            <text v-for="month in monthLabels" :x="month.x" y="-5" class="month">{{month.text}}
+            </text>
+
+
+            <text text-anchor="start" class="wday" dx="-14" dy="8" style="display: none;">S
+            </text>
+            <text text-anchor="start" class="wday" dx="-14" dy="20">Mon</text>
+            <text text-anchor="start" class="wday" dx="-14" dy="32" style="display: none;">T
+            </text>
+            <text text-anchor="start" class="wday" dx="-14" dy="44">Wed</text>
+            <text text-anchor="start" class="wday" dx="-14" dy="57" style="display: none;">T
+            </text>
+            <text text-anchor="start" class="wday" dx="-14" dy="69">Fri</text>
+            <text text-anchor="start" class="wday" dx="-14" dy="81" style="display: none;">S
+            </text>
+          </g>
+        </svg>
+        <div class="svg-tip svg-tip-one-line" v-bind:style="{ top: svgtip.top, left: svgtip.left, display: svgtip.display}">
+          <strong>{{svgtip.text}}</strong> on
+          {{moment(mouseoverDate).format('MMM DD, YYYY')}}
+        </div>
+      </div>
+      <div class="calendar-footer clearfix">
+      <span>
+        <a href="#">Learn how we count contributions.</a>
+      </span>
+        <div class="calendar-legend">
+          <span>Less</span>
+          <ul class="legend">
+            <li style="background-color: #eee"></li>
+            <li style="background-color: #d6e685"></li>
+            <li style="background-color: #8cc665"></li>
+            <li style="background-color: #44a340"></li>
+            <li style="background-color: #1e6823"></li>
+          </ul>
+          <span>More</span>
+        </div>
+      </div>
     </div>
-  
-  <ul class="nav nav-main">
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/">Home</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/archives">Archives</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/gallery">Gallery</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/about">About</a>
-      </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link nav-item-search" title="Search">
-        <i class="fe fe-search"></i>
-        Search
-      </a>
-    </li>
-  </ul>
-</nav>
+  </div>
 
-<nav class="navbar navbar-bottom">
-  <ul class="nav">
-    <li class="nav-item">
-      
-        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
-          <i class="fe fe-feed"></i>
+  <h3>Contribution activity</h3>
+  <div class="contribution-list">
+    <ul>
+      <li v-for="post in posts | filterBy selectedDate in 'date'">
+        <a href="{{post.url}}">{{post.title}}
         </a>
+        <span>{{post.date}}</span>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+<script>
+  var posts = [{"date":"2018-03-06","title":"centOS实践","url":"http://yoursite.com/2018/03/06/centOS实践/"},{"date":"2018-03-08","title":"linux合集","url":"http://yoursite.com/2018/03/08/linux合集/"},{"date":"2018-06-29","title":"java代码片段","url":"http://yoursite.com/2018/06/29/java代码片段/"},{"date":"2018-07-06","title":"docker搭建springboot项目","url":"http://yoursite.com/2018/07/06/docker搭建springboot项目/"},{"date":"2018-07-30","title":"centOS笔记","url":"http://yoursite.com/2018/07/30/centos笔记/"},{"date":"2018-08-08","title":"mybatis-generator自动生成代码","url":"http://yoursite.com/2018/08/08/mybatis-generator自动生成代码/"},{"date":"2018-08-10","title":"vue国际化","url":"http://yoursite.com/2018/08/10/vue国际化/"},{"date":"2018-08-11","title":"HashMap源码分析","url":"http://yoursite.com/2018/08/11/HashMap源码分析/"},{"date":"2019-02-22","title":"spring切面编程","url":"http://yoursite.com/2019/02/22/spring切面编程/"},{"date":"2019-02-27","title":"redis的bitmap","url":"http://yoursite.com/2019/02/27/redis的bitmap/"}];
+  var today = moment().format('YYYY-MM-DD');
+  var oneYearAgo = moment(today).subtract(1, 'years');
+  posts = posts.filter(function(post) {
+    return new Date(post.date) > oneYearAgo;
+  });
+  var monthLabels = [];
+  var monthName = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  var calendar = getCalendar(posts);
+
+  var dateRange = {
+    start: moment(oneYearAgo).format('MMM D, YYYY'),
+    end: moment().format('MMM D, YYYY')
+  }
+
+  var app = new Vue({
+    el: '#calendar',
+    data: {
+      posts: posts,
+      selectedDate: null,
+      calendar: calendar,
+      dateRange: dateRange,
+      mouseoverDate: null,
+      moment: moment,
+      monthLabels: monthLabels
+    },
+    created: function() {
+      this.selectedDate = 'none';
+    },
+    methods: {},
+    computed: {
+      svgtip: function() {
+        var date = this.mouseoverDate;
+        var display = date ? 'block' : 'none';
+        if (date) {
+          var coordinator = getIndexByDate(date);
+          var x = coordinator[0];
+          var y = coordinator[1];
+          var len = this.calendar[x].days[y].posts.length;
+          var text = len ? len + ' contributions' : 'No contributions';
+          var left = coordinator[0] * 12 - 37 + 'px';
+          coordinator[1] = coordinator[0] ? coordinator[1] : coordinator[1] + oneYearAgo.day();
+          var top = coordinator[1] * 12 + 12 - 32 + 'px';
+        }
+        return {
+          text: text,
+          left: left,
+          top: top,
+          display: display
+        }
+      }
+    }
+  });
+
+  function getCalendar(posts) {
+    // raw calendar
+    var maxCount = 0;
+    var tmr = new Date();
+    tmr.setDate(tmr.getDate() + 1);
+    var tmrStr = tmr.toISOString().slice(0, 10);
+    var date = new Date();
+    date.setYear(date.getFullYear() - 1); // start date is a year ago;
+    var calendar = [];
+    while (date.toISOString().slice(0, 10) !== tmrStr) {
+      var day = date.getDay();
+      if (day === 0 || calendar.length === 0) {
+        var x = calendar.length * 13;
+        calendar.push({
+          transform: 'translate(' + x + ',0)',
+          days: []
+        })
+      }
+
+      calendar[calendar.length - 1].days.push({
+        x: 14 - calendar.length,
+        y: day * 12,
+        date: date.toISOString().slice(0, 10),
+        posts: []
+      });
+
+      if (day === 0 && date.getDate() < 8) {
+        monthLabels.push({
+          x: 14 - calendar.length + x,
+          text: monthName[date.getMonth() - 1]
+        })
+      }
+
+      date.setDate(date.getDate() + 1);
+    }
+
+    // handle post info
+    posts.forEach(function(post) {
+      var x = getIndexByDate(post.date)[0];
+      var y = getIndexByDate(post.date)[1];
+
+      calendar[x].days[y].posts.push({
+        title: post.title,
+        url: post.url
+      });
+
+      var len = calendar[x].days[y].posts.length;
+      maxCount = Math.max(len, maxCount);
+    })
+
+    // handle fill color
+    calendar.forEach(function(week) {
+      week.days.forEach(function(day) {
+        day.fill = getColorByLength(day.posts.length, maxCount);
+      })
+    })
+
+    return calendar;
+  }
+
+  function getIndexByDate(date) {
+    date = moment(date);
+    var firstColumnLen = 7 - oneYearAgo.day();
+    var days = date.diff(oneYearAgo, 'days');
+
+    var x = days > firstColumnLen - 1 ? Math.ceil((days - firstColumnLen + 1) / 7) : 0;
+    var y = days > firstColumnLen - 1 ? date.day() : date.day() - oneYearAgo.day();
+    return [x, y];
+  }
+
+  function getColorByLength(len, max) {
+    var colors = ['#eee', '#d6e685', '#8cc665', '#44a340', '#1e6823'];
+    var colorsLen = colors.length - 1;
+    var color = len ? colors[0] : colors[1];
+    var interval = max / colorsLen;
+    if (max < colorsLen) {
+      color = colors[len];
+    } else {
+      color = colors[Math.ceil(len / interval)];
+    }
+    return color;
+  }
+
+</script>
+
+
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="footer-wrapper container">
+  <footer class="footer clearfix">
+    <div class="clearfix">
+    <a href="http://yoursite.com" class="footer-logo">
+      <i class="fa fa-github"></i>
+    </a>
+    <ul class="footer-social-link">
+      <li>© 2018 yang</li>
+      <li><a href="http://yoursite.com">Home</a></li>
       
-    </li>
-  </ul>
-</nav>
-
-<div class="search-form-wrap">
-  <div class="local-search local-search-plugin">
-  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
-  <div id="local-search-result" class="local-search-result"></div>
+    </ul>
+    <div class="footer-theme-info">
+      Theme <a href="//github.com/sabrinaluo/hexo-theme-replica">Replica</a>
+      by <a href="//github.com/sabrinaluo">Hiitea</a> ❤ Powered by Hexo
+    </div>
+    </div>
+    
+  </footer>
 </div>
-</div>
-</aside>
-  <script src="/js/jquery-2.0.3.min.js"></script>
-<script src="/js/lazyload.min.js"></script>
-<script src="/js/busuanzi-2.3.pure.min.js"></script>
-
-
-  <script src="/fancybox/jquery.fancybox.min.js"></script>
 
 
 
 
-<script src="/js/ocean.js"></script>
+<script src="/js/main.js"></script>
 
 </body>
 </html>
