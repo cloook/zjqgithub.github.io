@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="yanm1ng&#39;s blog">
+  <meta name="keyword" content="hexo-theme, vuejs">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      volatile关键字 | yang的博客
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  
+    <script src="/js/qrious.js"></script>
+  
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png">
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>yang的博客</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">主页</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">标签</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">关于</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">主页</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">标签</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">归档</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">关于</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>volatile关键字</h2>
+  <p class="post-date">2019-03-12</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><h2 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h2><blockquote>
+<p>相关概念</p>
+<ol>
+<li>内存模型</li>
+<li>并发编程三个概念</li>
+</ol>
+</blockquote>
+<h4 id="1-内存模型"><a href="#1-内存模型" class="headerlink" title="1. 内存模型"></a>1. 内存模型</h4><p>  计算机在执行程序时，每条指令都是在CPU中执行的，而执行指令的过程中，肯定会有数据的读取和写入。由于程序运行过程中的临时数据是存放在主存（物理内存）中的，这个时候就会有一个问题，CPU的运行速度很快，从内存读取数据和内存写入数据的过程跟CPU执行指令的速度相比要慢很多，于是，CPU就有了高速缓存。</p>
+<p><hr><br>   也就是说，程序在运行过程中，会将运算需要的数据从主存复制一份到CPU的高速缓存当中，那么CPU进行计算时就可以直接从它的高速缓存读取数据和向其中写入数据，运算结束之后，再将高速缓存当中的数据刷新到主存当中。</p>
+<p>  比如下面这段代码<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">i = i + 1;</span><br></pre></td></tr></table></figure></p>
+<p>  当线程执行这段代码的时候，会先从主存中读取i的值，然后复制一份到高速缓存当中，然后CPU执行指令对i进行加1操作，然后将数据写入高速缓存，最后将高速缓存中i最新的值刷新到主存当中。<br>  <hr><br>  当这个代码在单线程中运行是没有任何问题的，但是在多线程中运行就会有问题了。<br>  在多核CPU中，每条线程可能运行在不同CPU中，因此每个线程运行时有自己各自的高速缓存（对单核来说也会有这种问题）<br>  <hr><br> 假如同时有两个线程执行这段代码，i的初始值为0，那么理论上两个线程执行完之后i的值应该是2.<br> 但是可能存在这样的情况：初始时，两个线程分别读取i的值放入自己的高速缓存中，然后线程1进行加1操作，然后把i的值写入到主存。此时线程2取到的i还是0，进行加1操作之后，结果还是1，然后更新到主存，最终i的结果是1。<br> <strong>为了解决上述的缓存不一致问题，通常有2种办法：</strong></p>
+<ol>
+<li>通过在总线加LOCK锁的方式</li>
+<li><p>通过缓存一致性协议</p>
+<p>加LOCK相当于线程同步，固然可以解决缓存不一致问题，但是随之带来的问题则是效率低下。<br>然后就出现了缓存一致性协议。最出名的是Inter的MESI协议，MESI协议保证了每个缓存中使用的共享变量的副本是一致的。它的核心思想是：当CPU写数据时，如果发现操作的变量是共享变量，即在其他CPU中也存在该变量的副本，会发出信号通知其他CPU将该变量的缓存行置为无效状态，因为当其他CPU需要读取这个变量的时候，发现缓存中的变量是无效的，就会从主存中读取最新值。</p>
+</li>
+</ol>
+<h4 id="2-并发编程三个概念"><a href="#2-并发编程三个概念" class="headerlink" title="2. 并发编程三个概念"></a>2. 并发编程三个概念</h4><blockquote>
+<ol>
+<li>原子性<ol>
+<li>可见性</li>
+<li>有序性</li>
+</ol>
+</li>
+</ol>
+</blockquote>
+<p> <strong>原子性</strong></p>
+<p> 一个操作或者多个操作，要么全部执行并且执行的过程不会被任何因素打断，要么就都不执行。</p>
+<p> <strong>可见性</strong></p>
+<p> 当多个线程访问同一个变量时，一个线程改变了这个变量的值，其他线程能够立即看得到修改的值。</p>
+<p> <strong>有序性</strong></p>
+<p> 程序执行的顺序按照代码书写的先后顺序执行</p>
+<p> 如下面这段代码<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int i = 0;</span><br><span class="line">boolean flag = false;</span><br><span class="line">i = 1;                    //语句1</span><br><span class="line">flag = true;              // 语句2</span><br></pre></td></tr></table></figure></p>
+<p> 这里定义了一个int类型变量，一个boolean变量，按顺序来看，语句1在语句2前面，实际上JVM在真正执行这段代码的时候不一定保证语句1一定会在语句2之前执行。<br> 因为可能会发生指令重排序(Instruction Reorder)</p>
+<p> <span style="color:red">为什么会发生指令重排序呢，一般来说，处理器为了提高程序运行效率，可能会对输入代码进行优化，它不保证程序中各个语句的执行先后顺序和代码中的顺序完全一致，但是它会保证程序最终执行结果和代码顺序执行的结果是一样的。<span></span></span></p>
+<h2 id="java关键字和三个特性关系"><a href="#java关键字和三个特性关系" class="headerlink" title="java关键字和三个特性关系"></a>java关键字和三个特性关系</h2><table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">原子性</th>
+<th style="text-align:left">可见性</th>
+<th style="text-align:left">有序性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">synchronized</td>
+<td style="text-align:left">✅</td>
+<td style="text-align:left">✅</td>
+<td style="text-align:left">✅</td>
+</tr>
+<tr>
+<td style="text-align:left">Lock</td>
+<td style="text-align:left">✅</td>
+<td style="text-align:left">✅</td>
+<td style="text-align:left">✅</td>
+</tr>
+<tr>
+<td style="text-align:left">volatile</td>
+<td style="text-align:left">❌</td>
+<td style="text-align:left">✅</td>
+<td style="text-align:left">✅</td>
+</tr>
+</tbody>
+</table>
+<h6 id="volatile如何保证有序性？"><a href="#volatile如何保证有序性？" class="headerlink" title="volatile如何保证有序性？"></a>volatile如何保证有序性？</h6><p>被volatile修饰的变量具备两层语义；</p>
+<ul>
+<li>保证了不同线程对这个变量进行操作时的可见性，即一个线程修改了变量的值，其他线程立即可见。</li>
+<li>禁止进行指令重排序。</li>
+</ul>
+<p>例如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 线程1</span><br><span class="line">boolean stop = false;</span><br><span class="line">while(!stop) &#123;</span><br><span class="line">    dosomething();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 线程2</span><br><span class="line">stop = true;</span><br></pre></td></tr></table></figure></p>
+<p>这段代码是很经典的一段代码，很多人在中断线程时可能都会采用这种标记办法。但事实上，这段代码是可能会出问题的。</p>
+<p>当线程1在运行的时候，会将stop变量的值拷贝一份放在自己的高速缓存中，当线程2改变stop的值后，还没来得及写入主存，资源被占用了，那么线程1读取到的值还没有刷新….<br>boom。。。💥 程序就这么润物细无声地无限循环下去了</p>
+<h5 id="volatile的原理和实现机制"><a href="#volatile的原理和实现机制" class="headerlink" title="volatile的原理和实现机制"></a>volatile的原理和实现机制</h5><p>下面这段话摘自 《深入理解java虚拟机》：<br>“观察加入volatile关键字和没有加入volatile关键字所生成的汇编代码发现，加入volatile关键字时，会多出一个lock前缀指令”</p>
+<p>lock前缀指令实际上相当于一个内存屏障（也成内存栅栏），内存屏障会提供3个功能:</p>
+<ul>
+<li>它确保指令重排序不会把其他后面的指令排序到内存屏障之前的位置，也不会把前面的指令排到内存屏障的后面；</li>
+<li>它会强制将缓存的修改操作立即写入主存；</li>
+<li>如果是写操作，它会导致其他CPU中对应的缓存行无效；</li>
+</ul>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#java">
+    <span class="tag-code">java</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2019/02/27/redis的bitmap/">
+        <span class="nav-arrow">← </span>
+        
+          redis的bitmap
+        
+      </a>
+    
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+      <!-- No Comment -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#volatile"><span class="toc-nav-text">volatile</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#1-内存模型"><span class="toc-nav-text">1. 内存模型</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#2-并发编程三个概念"><span class="toc-nav-text">2. 并发编程三个概念</span></a></li></ol></li></ol><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#java关键字和三个特性关系"><span class="toc-nav-text">java关键字和三个特性关系</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-6"><a class="toc-nav-link" href="#volatile如何保证有序性？"><span class="toc-nav-text">volatile如何保证有序性？</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#volatile的原理和实现机制"><span class="toc-nav-text">volatile的原理和实现机制</span></a></li>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://yoursite.com/2019/03/12/volatile关键字/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+  <script>
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+  </script>
+
+
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2019 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>
